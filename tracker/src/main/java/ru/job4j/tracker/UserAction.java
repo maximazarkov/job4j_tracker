@@ -15,7 +15,7 @@ public interface UserAction {
      * @param output методы вывода информации
      * @since 11.10.2019 0.2
      */
-    void execute(Input input, MemTracker tracker, Consumer<String> output);
+    void execute(Input input, Tracker tracker, Consumer<String> output);
     /**
      * Метод возвращает информацию о данном пункте меню.
      * @return Строка меню

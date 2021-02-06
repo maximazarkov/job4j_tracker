@@ -12,7 +12,7 @@ public class FindItemsByName extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
+    public void execute(Input input, Tracker tracker, Consumer<String> output) {
         System.out.println("-------------- Поиск заявки по имени --------------");
         String key = input.ask("Введите имя заявки:");
         ArrayList<Item> items = tracker.findByName(key);
