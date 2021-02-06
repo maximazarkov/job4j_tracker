@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 public class MenuTracker {
     private Input input; // хранит ссылку на объект
-    private Tracker tracker; // хранит ссылку на объект
+    private MemTracker tracker; // хранит ссылку на объект
     private List<UserAction> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
 
     /**
@@ -21,7 +21,7 @@ public class MenuTracker {
      * @param tracker объект типа Tracker
      * @param output
      */
-    public MenuTracker(Input input, Tracker tracker, Consumer<String> output) {
+    public MenuTracker(Input input, MemTracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;

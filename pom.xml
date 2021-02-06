@@ -8,15 +8,16 @@
 	<modelVersion>4.0.0</modelVersion>
     <!-- укажем наш сайт - группировка библиотек, например, Job4j.ru выпускает несколько продуктов и мы хотим, чтобы эти проекты все лежали в одной папке ru.job4j. В java обычно используют имя домена, хотя имяможет быть любым. -->
 	<groupId>ru.job4j</groupId>
-	<!-- в артефакье указывают название проекта, например, java-a-to-z или junior -->
+	<!-- в артефакте указывают название проекта, например, java-a-to-z или junior -->
 	<!-- artifactId - уникальный ключ нашей библиоткив. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifackId. -->
-    <artifactId>tracker</artifactId>
-	<!-- здесь мы указываем, как мы собираем проект, например в jar, ear, war или указать pom, если данный pom.xml является родителем для других модулей -->
+    <artifactId>job4j_tracker</artifactId>
+	<!-- здесь мы указываем, как мы собираем проект, например в jar, ear, war
+	или указать pom, если данный pom.xml является родителем для других модулей -->
     <packaging>pom</packaging>
 	<!-- укажем версию проекта или библиотеки -->
     <version>2.0</version>
 	<!-- имя проекта -->
-    <name>tracker</name>
+    <name>job4j_tracker</name>
 	<!-- доменное имя проекта -->
 	<!-- сочетание goupId + artifactid + version - позволяют найти нужную библиотеку и загрузить ее в проект. -->
     <url>http://job4j.ru</url>
@@ -60,6 +61,12 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>11.0.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.18</version>
         </dependency>
     </dependencies>
 

@@ -11,7 +11,7 @@ public class FindItemById extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
         System.out.println("---------------- Поиск заявки по Id ---------------");
         String id = input.ask("Введите Id заявки:");
         Item item = tracker.findById(id);
