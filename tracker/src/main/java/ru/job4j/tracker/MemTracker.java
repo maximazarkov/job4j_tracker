@@ -6,7 +6,7 @@ import java.util.*;
  * @version $Id$
  * @since 0.1
  */
-public class Tracker {
+public class MemTracker {
     private final List<Item> items = new ArrayList<>(); // массив для хранение заявок.
 	private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
 	

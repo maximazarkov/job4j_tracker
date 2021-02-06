@@ -8,7 +8,7 @@ public class ExitProgram extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
 // ничего не делаем
     }
 }
