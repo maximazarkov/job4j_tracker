@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.input;
+
+import ru.job4j.tracker.action.MenuOutException;
 
 import java.util.Scanner;
 
@@ -6,20 +8,20 @@ public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
     @Override
-    public String ask(String quastion) {
-        System.out.print(quastion);
+    public String ask(String question) {
+        System.out.print(question);
         return scanner.nextLine();
     }
 
     /**
      * метод проверки введенного значени меню на вхождение его в диапазоно допустимых значений
-     * @param quastion - ответ пользователя
+     * @param question - ответ пользователя
      * @param range - диапазон допустимых занчений меню
      * @return - возвращаем числовое значение меню
      */
     @Override
-    public int ask(String quastion, int[] range) {
-        int key = Integer.valueOf(this.ask(quastion));
+    public int ask(String question, int[] range) {
+        int key = Integer.parseInt(this.ask(question));
         boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой
         // провгоним значние через диапазон меню
         for (int value : range) {

@@ -1,6 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
 
-import java.util.function.Consumer;
+import ru.job4j.tracker.action.UserAction;
 
 public abstract class BaseAction implements UserAction {
 

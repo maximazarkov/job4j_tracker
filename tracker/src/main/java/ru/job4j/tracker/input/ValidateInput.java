@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.input;
+
+import ru.job4j.tracker.action.MenuOutException;
 
 /**
  * Композиция...
@@ -14,10 +16,10 @@ public class ValidateInput implements Input {
     }
 
     @Override
-    public String ask(String quastion) {
-        return this.input.ask(quastion);
+    public String ask(String question) {
+        return this.input.ask(question);
     }
-    public int ask(String quastion, int[] range) {
+    public int ask(String question, int[] range) {
 
         /**
          * инициализируем условие выхода из цикла опроса клавиатуры. Если ошибок нет, то клавиатура опрашивается
@@ -27,7 +29,7 @@ public class ValidateInput implements Input {
         int value = -1;
         do {
            try {
-                value = this.input.ask(quastion, range);
+                value = this.input.ask(question, range);
                 invalid = false;
            } catch (MenuOutException moe) {
                //moe.printStackTrace();

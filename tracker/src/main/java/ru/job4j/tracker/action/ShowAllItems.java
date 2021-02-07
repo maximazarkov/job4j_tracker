@@ -1,4 +1,8 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
+
+import ru.job4j.tracker.Item;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.tracker.MemTracker;
 
 import java.util.function.Consumer;
 
@@ -12,7 +16,7 @@ public class ShowAllItems extends BaseAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker, Consumer<String> output) {
+    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
         System.out.println("------------ Отображение всех заявки --------------");
         for (Item item : tracker.findAll()) {
 //            System.out.println(item);  // @depricated v0.2

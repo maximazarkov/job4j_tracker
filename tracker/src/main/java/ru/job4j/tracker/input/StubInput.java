@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.input;
+
+import ru.job4j.tracker.action.MenuOutException;
 
 public class StubInput implements Input {
     /**
@@ -40,11 +42,11 @@ public class StubInput implements Input {
 
     /**
      * В текущем релизе данный метод является заглушкой для реализации наследования RuntimeExchange()
-     * @param quastion - ...
+     * @param question - ...
      * @param range - ...
      * @return - ...
      */
-    public int ask(String quastion, int[] range) {
+    public int ask(String question, int[] range) {
         int key = Integer.valueOf(this.value[this.position++]);
         boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой
         // провгоним значние через диапазон меню

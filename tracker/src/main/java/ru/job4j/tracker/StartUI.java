@@ -1,7 +1,11 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
-import java.util.List;
+import ru.job4j.tracker.action.MenuTracker;
+import ru.job4j.tracker.input.ConsoleInput;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.ValidateInput;
+import ru.job4j.tracker.tracker.MemTracker;
+
 import java.util.function.Consumer;
 
 /**
@@ -12,7 +16,7 @@ import java.util.function.Consumer;
 public class StartUI {
     private static final int EXIT = 6; //Константа для выхода из цикла.
     private final Input input; //  Получение данных от пользователя.
-    private final Tracker tracker; // Хранилище заявок
+    private final MemTracker tracker; // Хранилище заявок
 
     /**
      * Реализация вывода данных с помощью Consumer. С помощью лямбда будет передана функция println
@@ -27,7 +31,7 @@ public class StartUI {
      * @param output ...
      * @since 11.10.2019 0.2
      */
-    public StartUI(Input input, Tracker tracker, Consumer<String> output) {
+    public StartUI(Input input, MemTracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;
@@ -60,6 +64,6 @@ public class StartUI {
     public static void main(String[] args) {
         //new StartUI(new ConsoleInput(), new Tracker()).init();
         //new StartUI(new ValidateInput(), new Tracker());
-        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(), System.out::println);
+        new StartUI(new ValidateInput(new ConsoleInput()), new MemTracker(), System.out::println);
     }
 }
