@@ -20,7 +20,7 @@ public class SqlTracker implements Store {
             Class.forName(config.getProperty("driver-class-name"));
             cn = DriverManager.getConnection(
                     config.getProperty("url"),
-                    config.getProperty("user"),
+                    config.getProperty("username"),
                     config.getProperty("password")
             );
         } catch (Exception e) {

@@ -1,20 +1,20 @@
 package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.tracker.MemTracker;
+import ru.job4j.tracker.tracker.SqlTracker;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class MenuTracker {
+public class MenuTrackerSql {
     private Input input; // хранит ссылку на объект
-    private MemTracker tracker; // хранит ссылку на объект
-    private List<UserAction> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
+    private SqlTracker tracker; // хранит ссылку на объект
+    private List<UserActionSql> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
 
     /**
      * Реализация вывода данных с помощью Consumer
-     * @since 11.10.2019 0.2
+     * @since 08.02.2021 0.1
      */
     private final Consumer<String> output;
 
@@ -24,7 +24,7 @@ public class MenuTracker {
      * @param tracker объект типа Tracker
      * @param output
      */
-    public MenuTracker(Input input, MemTracker tracker, Consumer<String> output) {
+    public MenuTrackerSql(Input input, SqlTracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;
@@ -42,13 +42,13 @@ public class MenuTracker {
      * Метод заполняет массив.
      */
     public void fillActions() {
-        this.actions.add(new AddItem(0, "Add new Item"));
-        this.actions.add(new ShowAllItems(1, "Show all items"));
-        this.actions.add(new EditItem(2, "Edit item"));
-        this.actions.add(new DeleteItem(3, "Delete item"));
-        this.actions.add(new FindItemById(4, "Find item by Id"));
-        this.actions.add(new FindItemsByName(5, "Find items by name"));
-        this.actions.add(new ExitProgram(6, "Exit Program"));
+//        this.actions.add(new AddItem(0, "Add new Item"));
+//        this.actions.add(new ShowAllItems(1, "Show all items"));
+//        this.actions.add(new EditItem(2, "Edit item"));
+//        this.actions.add(new DeleteItem(3, "Delete item"));
+//        this.actions.add(new FindItemById(4, "Find item by Id"));
+//        this.actions.add(new FindItemsByName(5, "Find items by name"));
+//        this.actions.add(new ExitProgram(6, "Exit Program"));
     }
 
     /**
@@ -64,7 +64,7 @@ public class MenuTracker {
      * Метод выводит на экран меню.
      */
     public void show() {
-        for (UserAction action : this.actions) {
+        for (UserActionSql action : this.actions) {
             if (action != null) {
                 System.out.println(action.info());
             }
