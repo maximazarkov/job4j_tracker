@@ -2,6 +2,8 @@ package ru.job4j.tracker;
 
 import org.junit.Before;
 import org.junit.Test;
+import ru.job4j.tracker.tracker.MemTracker;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +22,11 @@ import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
 
-	Tracker tracker;
+	MemTracker tracker;
 
 	@Before
 	public void loadOutputBefore() {
-		tracker = new Tracker();
+		tracker = new MemTracker();
 	}
 
     @Test

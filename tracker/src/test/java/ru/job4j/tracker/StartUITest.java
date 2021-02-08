@@ -1,8 +1,10 @@
 package ru.job4j.tracker;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.StubInput;
+import ru.job4j.tracker.tracker.MemTracker;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -51,7 +53,7 @@ public class StartUITest {
 
     @Test
     public void whenShowAllItems() {
-        Tracker tracker = new Tracker();     // создаём Tracker
+        MemTracker tracker = new MemTracker();     // создаём Tracker
         Item item = new Item("a", "a", 123L);
         tracker.add(item);
         Input input = new StubInput(new String[]{"1", "6"});
@@ -71,7 +73,7 @@ public class StartUITest {
 
     @Test
     public void whenFindItemsById() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("a", "a", 123L);
         tracker.add(item);
 //      new StartUI(new ValidateInput(new ConsoleInput()), new Tracker(), System.out::println).init();
@@ -92,7 +94,7 @@ public class StartUITest {
 
     @Test
     public void whenFindItemsByName() {
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         Item item = new Item("a", "a", 123L);
         tracker.add(item);
         Input input = new StubInput(new String[]{"5", "a", "6"});
@@ -113,7 +115,7 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
-        Tracker tracker = new Tracker();     // создаём Tracker
+        MemTracker tracker = new MemTracker();     // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker, output);     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
@@ -122,7 +124,7 @@ public class StartUITest {
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() {
         // создаём Tracker
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         //Напрямую добавляем заявку
         Item item = new Item("test name", "desc", System.currentTimeMillis());
         tracker.add(item);
@@ -137,7 +139,7 @@ public class StartUITest {
     @Test
     public void whenDeleteThenNull() {
         // создаём Tracker
-        Tracker tracker = new Tracker();
+        MemTracker tracker = new MemTracker();
         //Напрямую добавляем заявку
         Item item = new Item("test name", "desc", System.currentTimeMillis());
         tracker.add(item);
