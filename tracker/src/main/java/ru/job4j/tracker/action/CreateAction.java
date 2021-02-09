@@ -1,30 +1,24 @@
 package ru.job4j.tracker.action;
 
+import ru.job4j.tracker.Item;
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.tracker.MemTracker;
+import ru.job4j.tracker.tracker.Store;
 
 import java.util.function.Consumer;
 
 public class CreateAction implements UserAction {
-
-
-    @Override
-    public int key() {
-        return 0;
+    public String nameMenu() {
+        return "Exit program";
     }
 
     @Override
-    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
-
-    }
-
-//    @Override
-//    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
-//        // TODO Спросить у ментора, что в этом классе должно быть. При выполнении
-//    }
-
-    @Override
-    public String info() {
-        return null;
+    public void execute(Input input, Store tracker, Consumer<String> output) {
+        System.out.println("------------ Добавление новой заявки --------------");
+        String name = input.ask("Введите имя заявки :");
+        String desc = input.ask("Введите описание заявки :");
+        Item item = new Item(name, desc, System.currentTimeMillis());
+        tracker.add(item);
+        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
+        output.accept("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
 }

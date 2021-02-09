@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public class MenuTrackerSql {
     private Input input; // хранит ссылку на объект
     private SqlTracker tracker; // хранит ссылку на объект
-    private List<UserActionSql> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
+    private List<UserAction> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
 
     /**
      * Реализация вывода данных с помощью Consumer
@@ -64,9 +64,9 @@ public class MenuTrackerSql {
      * Метод выводит на экран меню.
      */
     public void show() {
-        for (UserActionSql action : this.actions) {
+        for (UserAction action : this.actions) {
             if (action != null) {
-                System.out.println(action.info());
+//                System.out.println(action.info());
             }
         }
     }

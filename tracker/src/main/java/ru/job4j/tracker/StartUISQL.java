@@ -1,15 +1,11 @@
 package ru.job4j.tracker;
 
-import ru.job4j.tracker.action.CreateAction;
 import ru.job4j.tracker.action.MenuTrackerSql;
-import ru.job4j.tracker.action.UserAction;
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.tracker.SqlTracker;
-import ru.job4j.tracker.tracker.Store;
 
-import java.io.IOException;
 import java.util.function.Consumer;
 
 /**

@@ -5,16 +5,15 @@ import ru.job4j.tracker.tracker.Store;
 
 import java.util.function.Consumer;
 
-/**
- * @deprecated. Используйте для работы новый класс ExitAction
- */
-public class ExitProgram extends BaseAction {
-    public ExitProgram(int key, String info) {
-        super(key, info);
+public class ExitAction implements UserAction {
+
+    public String nameMenu() {
+        return "Exit program";
     }
 
     @Override
     public void execute(Input input, Store tracker, Consumer<String> output) {
         // ничего не делаем
     }
+
 }

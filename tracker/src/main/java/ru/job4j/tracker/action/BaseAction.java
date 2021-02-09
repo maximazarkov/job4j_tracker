@@ -1,8 +1,10 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.tracker.action.UserAction;
-
-public abstract class BaseAction implements UserAction {
+/**
+ * Класс представляет некий общий интерфейс для вывода информации о заявке. Т.е. при
+ * @deprecated. в новой версии трекера рекомендовано применять новый интерфейс UserAction
+ */
+public abstract class BaseAction implements UserActionMem {
 
     private final int key;
     private final String name;

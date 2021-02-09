@@ -1,27 +1,31 @@
 package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.tracker.MemTracker;
+import ru.job4j.tracker.tracker.Store;
 
 import java.util.function.Consumer;
 
+/**
+ * В отличии от UserActionMem UserAction не принимает параметров и предназначен для формирования меню
+ * только на основе названия пункта. Номера пунктов необходимо формировать с помощью внешнего цикла.
+ *
+ * @author Maxim Azarkov
+ * @version 0.1 10.02.2021
+ */
 public interface UserAction {
+
     /**
-     * Метод возвращает ключ опции.
-     * @return ключ
+     * Метод возвращающий название пункта меню
+     * @return - имя пункта меню
      */
-    int key();
+    String nameMenu();
+
     /**
      * Основной метод.
-     * @param input объект типа Input
-     * @param tracker объект типа Tracker
-     * @param output методы вывода информации
-     * @since 11.10.2019 0.2
+     * @param variable - заранее проверенный номер пункта меню, который ввел пользователь
+     * @param tracker объект модели Store (MemTracker, SqlTracker e.t.c.)
+     * @param output методы вывода информации, реализован с помощью лямбда
+     * @since 10.02.2021 0.2
      */
-    void execute(Input input, MemTracker tracker, Consumer<String> output);
-    /**
-     * Метод возвращает информацию о данном пункте меню.
-     * @return Строка меню
-     */
-    String info();
+    void execute(Input variable, Store tracker, Consumer<String> output);
 }

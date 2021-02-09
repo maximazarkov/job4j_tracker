@@ -2,36 +2,22 @@ package ru.job4j.tracker.action;
 
 import ru.job4j.tracker.Item;
 import ru.job4j.tracker.input.Input;
-import ru.job4j.tracker.tracker.MemTracker;
+import ru.job4j.tracker.tracker.Store;
 
 import java.util.function.Consumer;
 
 /**
- * Класс реализует добавленяи новый заявки в хранилище.
+ * Класс реализует добавление новой заявки в хранилище.
+ * @deprecated. Используйте для работы новый класс CreateAction
  */
 public class AddItem extends BaseAction {
 
-//    private int key;
-//    private String info;
-
     public AddItem(int key, String info) {
-        //this.key = key;
-        //this.info = info;
         super(key, info);
     }
 
-//    @Override
-//    public int key() {
-//        return this.key;
-//    }
-
-//    @Override
-//    public String info() {
-//        return String.format("%s. %s", this.key(), this.info);
-//    }
-
     @Override
-    public void execute(Input input, MemTracker tracker, Consumer<String> output) {
+    public void execute(Input input, Store tracker, Consumer<String> output) {
         System.out.println("------------ Добавление новой заявки --------------");
         String name = input.ask("Введите имя заявки :");
         String desc = input.ask("Введите описание заявки :");

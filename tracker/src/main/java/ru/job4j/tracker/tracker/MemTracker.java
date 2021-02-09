@@ -85,7 +85,7 @@ public class MemTracker implements Store {
 
 	/**
      * Метод реализаущий получение списка по имени из хранилища.
-	 * @param key - ...
+	 * @param key - имя заявки, которую необходимо найти.
      */
 	@Override
 	public List<Item> findByName(String key) {
@@ -126,6 +126,10 @@ public class MemTracker implements Store {
 		return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
 
+	/**
+	 * Данный класс при работе с памятью не требуется, по этому он не реализован. Наследует AutoClosable
+	 * @throws Exception
+	 */
 	@Override
 	public void close() throws Exception {
 

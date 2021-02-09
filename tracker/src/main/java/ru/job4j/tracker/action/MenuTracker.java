@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 public class MenuTracker {
     private Input input; // хранит ссылку на объект
     private MemTracker tracker; // хранит ссылку на объект
-    private List<UserAction> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
+    private List<UserActionMem> actions = new ArrayList<>(); // хранит ссылку на массив типа UserAction
 
     /**
      * Реализация вывода данных с помощью Consumer
@@ -64,7 +64,7 @@ public class MenuTracker {
      * Метод выводит на экран меню.
      */
     public void show() {
-        for (UserAction action : this.actions) {
+        for (UserActionMem action : this.actions) {
             if (action != null) {
                 System.out.println(action.info());
             }

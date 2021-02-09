@@ -97,10 +97,7 @@ public class Item {
 	public long getTime() {
 		return this.time;
 	}
-	
-	/////////////////////////////
-	// пока не известная функция
-	/////////////////////////////
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -112,18 +109,12 @@ public class Item {
 		Item item = (Item) o;
 		return time == item.time && Objects.equals(id, item.id) && Objects.equals(name, item.name) && Objects.equals(desc, item.desc);
 	}
-	
-	/////////////////////////////
-	// пока не известная функция
-	/////////////////////////////
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id, name, desc, time);
 	}
 
-	/////////////////////////////
-	// перегрузим метод toString()
-	/////////////////////////////
 	@Override
 	public String toString() {
 		return "Item{" + "id='" + id + "\', name='" + name + '\'' + ", desc='" + desc + '\'' + ", time=" + time + '}';
