@@ -90,7 +90,7 @@ public class TrackerTest {
 		tracker.add(item);
 		item = new Item("test1", "testDescription3", System.currentTimeMillis());
 		tracker.add(item);
-		ArrayList<Item> allItem  = tracker.findByName("test1");
+		List<Item> allItem  = tracker.findByName("test1");
 		// Проверяем, что заявка с таким id имеет новые имя test2.
 		assertThat(tracker.findByName("test1"), is(allItem));
 	}

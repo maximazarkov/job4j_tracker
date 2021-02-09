@@ -5,6 +5,7 @@ import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.tracker.MemTracker;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 /**
@@ -19,7 +20,7 @@ public class FindItemsByName extends BaseAction {
     public void execute(Input input, MemTracker tracker, Consumer<String> output) {
         System.out.println("-------------- Поиск заявки по имени --------------");
         String key = input.ask("Введите имя заявки:");
-        ArrayList<Item> items = tracker.findByName(key);
+        List<Item> items = tracker.findByName(key);
         if (items != null) {
             for (Item item : items) {
                 System.out.println(item);

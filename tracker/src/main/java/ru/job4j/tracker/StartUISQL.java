@@ -74,15 +74,15 @@ public class StartUISQL {
         Input validate = new ValidateInput(
                 new ConsoleInput()
         );
-        try (Store tracker = new SqlTracker()) {
-            tracker.init();
-            UserAction[] actions = {
-                 new CreateAction();
-            }
-            new StartUISQL().init(validate, tracker, actions);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try (Store tracker = new SqlTracker()) {
+//            tracker.init();
+//            UserAction[] actions = {
+//                 new CreateAction();
+//            }
+//            new StartUISQL().init(validate, tracker, actions);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }

@@ -1,24 +1,33 @@
 package ru.job4j.tracker.tracker;
 
 import ru.job4j.tracker.Item;
-
 import java.util.*;
 
 /**
+ * @author Azarkov Maxim
  * @version $Id$
- * @since 0.1
+ * @since 10.02.2021 v0.2
  */
-public class MemTracker {
+public class MemTracker implements Store {
     private final List<Item> items = new ArrayList<>(); // массив для хранение заявок.
 	private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
-	
-    /**
-     * Метод реализаущий добавление заявки в хранилище.
-	 * @param item новая заявка
+
+	@Override
+	public void init() {
+
+	}
+
+	/**
+	 * Метод реализующий добавление заявки
+	 * @param item - принимает обект, сохраняет его в памяти добавляя новые параметры и
+	 *             возвращзает этот же объект но с присвоенным id.
+	 * @return
 	 */
-    public void add(Item item) {
-        item.setId(this.generateId());
-        this.items.add(item);
+	@Override
+	public Item add(Item item) {
+		item.setId(this.generateId());
+		this.items.add(item);
+		return item;
 	}
 
 	 /**
@@ -26,6 +35,7 @@ public class MemTracker {
 	 * @param id уникальный ключ заяки.
      * @param item новая заявка.
      */
+	 @Override
 	public boolean replace(String id, Item item) {
 		boolean result = false;
         System.out.println(id);
@@ -46,6 +56,7 @@ public class MemTracker {
      * Метод реализаущий удаление заявок в хранилище.
 	 * @param id уникальный ключ заяки.
      */
+	@Override
 	public boolean delete(String id) {
 		boolean result = false;
 		int index = 0;
@@ -64,8 +75,9 @@ public class MemTracker {
      * Метод реализаущий получение списка всех заявок из хранилища.
 	 * @return - all elements by Tracker
      */
-    public ArrayList<Item> findAll() {
-        ArrayList<Item>  findItems = new ArrayList<>();
+	@Override
+    public List<Item> findAll() {
+        List<Item>  findItems = new ArrayList<>();
         Iterator<Item> it = items.iterator();
         findItems.addAll(items);
         return findItems;
@@ -75,8 +87,9 @@ public class MemTracker {
      * Метод реализаущий получение списка по имени из хранилища.
 	 * @param key - ...
      */
-	public ArrayList<Item> findByName(String key) {
-		ArrayList<Item> find = new ArrayList<>();
+	@Override
+	public List<Item> findByName(String key) {
+		List<Item> find = new ArrayList<>();
 		Iterator<Item> it = items.iterator();
 		while (it.hasNext()) {
 			Item i = it.next();
@@ -92,6 +105,7 @@ public class MemTracker {
      * Метод реализаущий получение заявки по id из хранилища.
 	 * @param id - уникальный ключ заявки.
      */
+	@Override
 	public Item findById(String id) {
 		Item result = null;
 		for (Item item : items) {
@@ -111,4 +125,9 @@ public class MemTracker {
     private String generateId() {
 		return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
+
+	@Override
+	public void close() throws Exception {
+
+	}
 }
