@@ -8,17 +8,18 @@ import java.util.function.Consumer;
 
 public class CreateAction implements UserAction {
     public String nameMenu() {
-        return "Exit program";
+        return "Add Item";
     }
 
     @Override
-    public void execute(Input input, Store tracker, Consumer<String> output) {
-        System.out.println("------------ Добавление новой заявки --------------");
-        String name = input.ask("Введите имя заявки :");
-        String desc = input.ask("Введите описание заявки :");
+    public boolean execute(Input input, Store tracker, Consumer<String> output) {
+        System.out.println("------------ Add Item --------------");
+        String name = input.ask("Enter name Item :");
+        String desc = input.ask("Enter description Item :");
         Item item = new Item(name, desc, System.currentTimeMillis());
         tracker.add(item);
-        System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
-        output.accept("------------ Новая заявка с getId : " + item.getId() + "-----------");
+        System.out.println("------------ Item has been successfully added with Id : " + item.getId() + "-----------");
+//        output.accept("------------ Новая заявка с getId : " + item.getId() + "-----------");
+        return true;
     }
 }

@@ -27,5 +27,5 @@ public interface UserAction {
      * @param output методы вывода информации, реализован с помощью лямбда
      * @since 10.02.2021 0.2
      */
-    void execute(Input variable, Store tracker, Consumer<String> output);
+    boolean execute(Input variable, Store tracker, Consumer<String> output) throws Exception;
 }

@@ -35,13 +35,13 @@ public class StartUISQL {
         this.input = input;
         this.tracker = tracker;
         this.output = output;
-        init();
+//        init();
     }
 
     /**
      * Основой цикл программы.
      */
-    private void init() {
+    private void init() throws Exception {
         boolean exit = false;
         MenuTrackerSql menu = new MenuTrackerSql(this.input, this.tracker, output);
         menu.fillActions();

@@ -56,7 +56,7 @@ public class MenuTrackerSql {
      *
      * @param key ключ операции
      */
-    public void select(int key) {
+    public void select(int key) throws Exception {
         this.actions.get(key).execute(this.input, this.tracker, output);
     }
 

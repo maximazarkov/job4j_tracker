@@ -12,8 +12,9 @@ public class ExitAction implements UserAction {
     }
 
     @Override
-    public void execute(Input input, Store tracker, Consumer<String> output) {
-        // ничего не делаем
+    public boolean execute(Input input, Store tracker, Consumer<String> output) throws Exception {
+        tracker.close();
+        return true;
     }
 
 }

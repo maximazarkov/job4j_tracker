@@ -44,6 +44,9 @@ public class StartUI {
 
     }
 
+    public StartUI(Input input, MemTracker tracker, Consumer<String> output) {
+    }
+
     /**
      * основной цикл программы
      * @param validate - валидный пункт меню. Валибность должна быть проверена заранее.
@@ -52,7 +55,10 @@ public class StartUI {
      */
     private void init(Input validate, Store tracker, UserAction[] actions) {
         boolean exit = false;
-
+        for (int i = 1; i < actions.length; i++) {
+            System.out.printf("%d. %s\n", i, actions[i].nameMenu());
+        }
+        System.out.printf("%d. %s\n", 0, actions[0].nameMenu());
     }
 
     /**
@@ -87,13 +93,18 @@ public class StartUI {
         /*
         * TODO преобразование MenuTracker начнем с того, что начнем перетаскивать и модифицировать меторы с него
         * в класс StartUI. Модифицировать будем относительно конструкции, заданной в задании.
-        * */
+        */
         try (Store tracker = new MemTracker()) {
             tracker.init(); // в данном варианте по сути бесполезный выход, но по заданию он должен быть.
             /*зададим перечень пунктов меню по возрастанию. пункт меню Exit program  перенесем в позицию 0 для удобства*/
             UserAction[] actions = {
                     new ExitAction(),
-                    new CreateAction()
+                    new CreateAction(),
+                    new ReplaceAction(),
+                    new DeleteAction(),
+                    new FindAllAction(),
+                    new FindByIdAction(),
+                    new FindByNameAction()
             };
             new StartUI().init(validate, tracker, actions);
         } catch (IOException e) {
