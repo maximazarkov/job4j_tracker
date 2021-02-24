@@ -55,10 +55,9 @@ public class StartUI {
      */
     private void init(Input validate, Store tracker, UserAction[] actions) {
         boolean exit = false;
-        for (int i = 1; i < actions.length; i++) {
-            System.out.printf("%d. %s\n", i, actions[i].nameMenu());
-        }
-        System.out.printf("%d. %s\n", 0, actions[0].nameMenu());
+        MenuTrackerMem menu = new MenuTrackerMem(validate, tracker, System.out::println);
+        menu.fillActions(actions);
+        menu.show();
     }
 
     /**

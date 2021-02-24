@@ -2,7 +2,7 @@ package ru.job4j.tracker.action;
 
 /**
  * Класс представляет некий общий интерфейс для вывода информации о заявке. Т.е. при
- * @deprecated. в новой версии трекера рекомендовано применять новый интерфейс UserAction
+ * @deprecated в новой версии трекера рекомендовано применять новый интерфейс UserAction
  */
 public abstract class BaseAction implements UserActionMem {
 

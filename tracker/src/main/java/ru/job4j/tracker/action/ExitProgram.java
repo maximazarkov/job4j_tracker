@@ -6,7 +6,7 @@ import ru.job4j.tracker.tracker.Store;
 import java.util.function.Consumer;
 
 /**
- * @deprecated. Используйте для работы новый класс ExitAction
+ * @deprecated Используйте для работы новый класс ExitAction
  */
 public class ExitProgram extends BaseAction {
     public ExitProgram(int key, String info) {

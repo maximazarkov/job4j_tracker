@@ -42,6 +42,8 @@ public class StartUITest {
         .append("5. Find items by name").append(LS)
         .append("6. Exit Program").toString();
 
+
+
     @Before
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
@@ -60,6 +62,29 @@ public class StartUITest {
         Item item = new Item("a", "a", 123L);
         tracker.add(item);
         Input input = new StubInput(new String[]{"1", "6"});
+        // TODO .... судя по заданию, нужно как-то уйти от конструктора
+        new StartUI(input, tracker, output);
+        StringBuilder sb = new StringBuilder();
+        sb.append(MENU).append(LS);
+        sb.append("------------ Отображение всех заявки --------------").append(LS);
+        sb.append(String.format("Name: %s| Desc: %s| Id: %s",
+                item.getName(),
+                item.getDesc(),
+                item.getId())).append(LS);
+        sb.append("---------------------------------------------------").append(LS);
+        sb.append(MENU).append(LS);
+        //assertThat(new String(out.toByteArray()), is(sb.toString()));
+        assertThat(this.output.toString(), is(sb.toString()));
+    }
+
+    @Test
+    // TODO ... решить вопрос с игнором после завершения реализации Mem Tracker
+    public void whenShowAllItemsMem() {
+        MemTracker tracker = new MemTracker();     // создаём Tracker
+        Item item = new Item("a", "a", 123L);
+        tracker.add(item);
+        /*вызовем FindAllAction() и выйдем из программы*/
+        Input input = new StubInput(new String[]{"4", "0"});
         // TODO .... судя по заданию, нужно как-то уйти от конструктора
         new StartUI(input, tracker, output);
         StringBuilder sb = new StringBuilder();

@@ -8,7 +8,7 @@ import java.util.function.Consumer;
 
 /**
  * Класс реализует добавление новой заявки в хранилище.
- * @deprecated. Используйте для работы новый класс CreateAction
+ * @deprecated Используйте для работы новый класс CreateAction
  */
 public class AddItem extends BaseAction {
 

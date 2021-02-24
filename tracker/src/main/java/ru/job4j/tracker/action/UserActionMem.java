@@ -6,7 +6,7 @@ import ru.job4j.tracker.tracker.Store;
 import java.util.function.Consumer;
 
 /**
- * @deprecated. в новой версии трекера рекомендовано применять новый интерфейс UserAction
+ * @deprecated в новой версии трекера рекомендовано применять новый интерфейс UserAction
  */
 public interface UserActionMem {
     /**
