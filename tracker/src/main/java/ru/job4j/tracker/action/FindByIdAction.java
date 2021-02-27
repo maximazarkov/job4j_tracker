@@ -28,6 +28,10 @@ public class FindByIdAction implements UserAction {
             System.out.println("----------------- Item not found ------------------");
             return false;
         }
+    }
 
+    @Override
+    public boolean execute(Input variable, Store tracker) throws Exception {
+        return false;
     }
 }

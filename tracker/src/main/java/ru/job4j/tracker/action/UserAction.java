@@ -28,4 +28,12 @@ public interface UserAction {
      * @since 10.02.2021 0.2
      */
     boolean execute(Input variable, Store tracker, Consumer<String> output) throws Exception;
+
+    /**
+     * Основной метод.
+     * @param variable - заранее проверенный номер пункта меню, который ввел пользователь
+     * @param tracker объект модели Store (MemTracker, SqlTracker e.t.c.)
+     * @since 10.02.2021 0.2
+     */
+    boolean execute(Input variable, Store tracker) throws Exception;
 }

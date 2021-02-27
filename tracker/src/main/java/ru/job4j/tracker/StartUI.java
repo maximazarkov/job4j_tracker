@@ -53,11 +53,14 @@ public class StartUI {
      * @param tracker - модель трекера для сохранения данных
      * @param actions - список меню
      */
-    private void init(Input validate, Store tracker, UserAction[] actions) {
+    private void init(Input validate, Store tracker, UserAction[] actions) throws Exception {
         boolean exit = false;
         MenuTrackerMem menu = new MenuTrackerMem(validate, tracker, System.out::println);
         menu.fillActions(actions);
         menu.show();
+        int select = validate.askToInt("Enter select: ");
+        UserAction action = actions[select];
+        exit = action.execute(validate, tracker);
     }
 
     /**

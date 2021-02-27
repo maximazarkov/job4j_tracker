@@ -7,10 +7,10 @@ public class StubInput implements Input {
      * Это поле содержит последовательность ответов пользователя.
      * Например. Если пользователь
      * хочет выбрать добавление новой заявки ему нужно ввести:
-     * 0 - выбор пункта меня "добавить новую заявку".
+     * 1 - выбор пункта меня "добавить новую заявку" (вызывается new CreateAction()).
      * name - имя заявки
      * desc - описание заявки
-     * y - выйти из трекера.
+     * 0 - выйти из трекера (new ExitAction()).
      */
     private final String[] value;
 
@@ -40,13 +40,18 @@ public class StubInput implements Input {
         return this.value[this.position++];
     }
 
+    @Override
+    public String askToStr(String question) {
+        return this.value[this.position++];
+    }
+
     /**
      * В текущем релизе данный метод является заглушкой для реализации наследования RuntimeExchange()
      * @param question - ...
      * @param range - ...
      * @return - ...
      */
-    public int ask(String question, int[] range) {
+    public int askToInt(String question, int[] range) {
         int key = Integer.valueOf(this.value[this.position++]);
         boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой
         // провгоним значние через диапазон меню
@@ -60,5 +65,10 @@ public class StubInput implements Input {
             throw new MenuOutException("Out of menu range.");
         }
         return key;
+    }
+
+    @Override
+    public int askToInt(String question) {
+        return 0;
     }
 }

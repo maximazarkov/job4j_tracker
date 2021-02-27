@@ -7,10 +7,23 @@ import java.util.Scanner;
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
+    /**
+     * метод выводит значение меню в формате String
+     * @param question - Вопрос пользователю
+     * @return - возвращает введенное пользователем значение  в формате String
+     */
     @Override
-    public String ask(String question) {
+    public String askToStr(String question) {
         System.out.print(question);
         return scanner.nextLine();
+    }
+
+    /**
+     * @deprecated
+     */
+    @Override
+    public String ask(String question) {
+        return null;
     }
 
     /**
@@ -20,8 +33,8 @@ public class ConsoleInput implements Input {
      * @return - возвращаем числовое значение меню
      */
     @Override
-    public int ask(String question, int[] range) {
-        int key = Integer.parseInt(this.ask(question));
+    public int askToInt(String question, int[] range) {
+        int key = Integer.parseInt(this.askToStr(question));
         boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой
         // провгоним значние через диапазон меню
         for (int value : range) {
@@ -34,5 +47,10 @@ public class ConsoleInput implements Input {
             throw new MenuOutException("Out of menu range.");
         }
         return key;
+    }
+
+    @Override
+    public int askToInt(String question) {
+        return 0;
     }
 }

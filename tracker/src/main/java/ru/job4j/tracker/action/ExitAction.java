@@ -17,4 +17,8 @@ public class ExitAction implements UserAction {
         return true;
     }
 
+    @Override
+    public boolean execute(Input variable, Store tracker) throws Exception {
+        return false;
+    }
 }

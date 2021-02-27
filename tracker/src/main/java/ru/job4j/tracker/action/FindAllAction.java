@@ -28,4 +28,9 @@ public class FindAllAction implements UserAction {
         System.out.println("---------------------------------------------------");
         return true;
     }
+
+    @Override
+    public boolean execute(Input variable, Store tracker) throws Exception {
+        return false;
+    }
 }

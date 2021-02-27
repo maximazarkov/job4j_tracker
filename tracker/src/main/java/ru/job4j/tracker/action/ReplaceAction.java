@@ -31,4 +31,9 @@ public class ReplaceAction implements UserAction {
             return false;
         }
     }
+
+    @Override
+    public boolean execute(Input variable, Store tracker) throws Exception {
+        return false;
+    }
 }

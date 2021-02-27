@@ -22,4 +22,9 @@ public class CreateAction implements UserAction {
 //        output.accept("------------ Новая заявка с getId : " + item.getId() + "-----------");
         return true;
     }
+
+    @Override
+    public boolean execute(Input variable, Store tracker) throws Exception {
+        return false;
+    }
 }

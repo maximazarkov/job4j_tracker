@@ -30,4 +30,13 @@ public class FindByNameAction implements UserAction {
         System.out.println("---------------------------------------------------");
         return true;
     }
+
+    public FindByNameAction() {
+        super();
+    }
+
+    @Override
+    public boolean execute(Input variable, Store tracker) throws Exception {
+        return false;
+    }
 }

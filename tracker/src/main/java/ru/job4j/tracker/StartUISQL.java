@@ -52,7 +52,7 @@ public class StartUISQL {
         while (!exit) {
             menu.show();
             //String answer = input.ask("Введите пункт меню : ");
-            int answer = input.ask("Введите пункт меню : ", range);
+            int answer = input.askToInt("Введите пункт меню : ", range);
             menu.select(answer);
             //menu.select(input.ask("select:", range));
             if (EXIT == answer) {

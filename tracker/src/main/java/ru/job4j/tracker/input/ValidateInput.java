@@ -29,7 +29,7 @@ public class ValidateInput implements Input {
         int value = -1;
         do {
            try {
-                value = this.input.ask(question, range);
+                value = this.input.askToInt(question, range);
                 invalid = false;
            } catch (MenuOutException moe) {
                //moe.printStackTrace();
@@ -39,5 +39,20 @@ public class ValidateInput implements Input {
            }
         } while (invalid);
         return value;
+    }
+
+    @Override
+    public String askToStr(String question) {
+        return null;
+    }
+
+    @Override
+    public int askToInt(String question, int[] range) {
+        return 0;
+    }
+
+    @Override
+    public int askToInt(String question) {
+        return 0;
     }
 }
