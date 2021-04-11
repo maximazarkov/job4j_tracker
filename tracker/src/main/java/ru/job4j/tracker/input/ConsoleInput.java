@@ -3,12 +3,16 @@ package ru.job4j.tracker.input;
 import ru.job4j.tracker.action.MenuOutException;
 
 import java.util.Scanner;
-
+/**
+ * Класс, для организации работы консольного ввода каманд от пользователя
+ * @author azarkov m.n.
+ * @version v.0.1 11.04.2021
+ */
 public class ConsoleInput implements Input {
     private Scanner scanner = new Scanner(System.in);
 
     /**
-     * метод выводит значение меню в формате String
+     * метод для получения данных с клавиатуры через консоль
      * @param question - Вопрос пользователю
      * @return - возвращает введенное пользователем значение  в формате String
      */
@@ -19,16 +23,8 @@ public class ConsoleInput implements Input {
     }
 
     /**
-     * @deprecated
-     */
-    @Override
-    public String ask(String question) {
-        return null;
-    }
-
-    /**
      * метод проверки введенного значени меню на вхождение его в диапазоно допустимых значений
-     * @param question - ответ пользователя
+     * @param question - Вопрос пользователю
      * @param range - диапазон допустимых занчений меню
      * @return - возвращаем числовое значение меню
      */
@@ -51,6 +47,11 @@ public class ConsoleInput implements Input {
 
     @Override
     public int askToInt(String question) {
+        return 0;
+    }
+
+    @Override
+    public int askToInt(String question, int max) {
         return 0;
     }
 }

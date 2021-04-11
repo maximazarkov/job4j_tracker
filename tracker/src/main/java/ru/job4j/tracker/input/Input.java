@@ -1,13 +1,6 @@
 package ru.job4j.tracker.input;
 
 public interface Input {
-    /**
-     * Метод выводит значение меню в формате String.
-     * @param question - вопрос, который выводится пользователю.
-     * @return - возвращает введенное пользователем значение  в формате String.
-     * @deprecated заменена на String askStr(String question).
-     */
-    String ask(String question);
 
     /**
      * Метод выводит значение меню в формате String.
@@ -21,6 +14,7 @@ public interface Input {
      * @param question - вопрос, который выводится пользователю.
      * @param range - диапазон допустимых занчений меню.
      * @return - возвращаем числовое значение меню.
+     * @deprecated передача массива для формирования меню устарела.
      */
     int askToInt(String question, int[] range);
 
@@ -31,4 +25,13 @@ public interface Input {
      * @return - возвращаем числовое значение меню.
      */
     int askToInt(String question);
+
+    /**
+     * Возвращает значение меню в формате int c проверкой на вхождение его в диапазон допустимых значений от 0 до max.
+     * @param question - вопрос, который выводится пользователю.
+     * @param max - максимальное значение номера пункта меню в диапазоне [0..max].
+     * @return
+     * @since 11.04.2021
+     */
+    int askToInt(String question, int max);
 }

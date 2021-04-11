@@ -2,15 +2,20 @@ package ru.job4j.tracker.input;
 
 import ru.job4j.tracker.action.MenuOutException;
 
+/**
+ * Класс, для имитации консольного ввода каманд от пользователя
+ * @author azarkov m.n.
+ * @version v.0.1 11.04.2021
+ */
 public class StubInput implements Input {
     /**
-     * Это поле содержит последовательность ответов пользователя.
-     * Например. Если пользователь
-     * хочет выбрать добавление новой заявки ему нужно ввести:
+     * Поле для хранения последовательности ответов пользователя.
+     * Например, если пользователь хочет выбрать добавление новой заявки, ему в консолия нужно ввести:
      * 1 - выбор пункта меня "добавить новую заявку" (вызывается new CreateAction()).
      * name - имя заявки
      * desc - описание заявки
      * 0 - выйти из трекера (new ExitAction()).
+     * В массив достоточно передать String[]{"1", name, desc, "0"}
      */
     private final String[] value;
 
@@ -32,14 +37,10 @@ public class StubInput implements Input {
      * Для этого при каждом вызове метода ask мы увеличиваем счетчик и
      * при следующем вызове он вернет нам новое значение.
      *
-     * @param question - ...
-     * @return - ...
+     * @param question - вопрос от пользователя (выбор пункта меню). Но в версии StubInput он не используется
+     *                 т.к. массив ответов заранение определен при инициализации класса и сохранен в value
+     * @return - один из заранее определенных ответов пользователей, хранящихся в value[position++].
      */
-    @Override
-    public String ask(String question) {
-        return this.value[this.position++];
-    }
-
     @Override
     public String askToStr(String question) {
         return this.value[this.position++];
@@ -71,4 +72,10 @@ public class StubInput implements Input {
     public int askToInt(String question) {
         return 0;
     }
+
+    @Override
+    public int askToInt(String question, int max) {
+        return 0;
+    }
+
 }

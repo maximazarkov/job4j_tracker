@@ -20,7 +20,7 @@ public class FindByNameAction implements UserAction {
     @Override
     public boolean execute(Input input, Store tracker, Consumer<String> output) {
         System.out.println("-------------- Find Item by Name --------------");
-        String key = input.ask("Enter Item Name :");
+        String key = input.askToStr("Enter Item Name :");
         List<Item> items = tracker.findByName(key);
         if (items != null) {
             for (Item item : items) {

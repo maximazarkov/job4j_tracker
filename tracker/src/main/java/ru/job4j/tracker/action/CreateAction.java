@@ -14,8 +14,8 @@ public class CreateAction implements UserAction {
     @Override
     public boolean execute(Input input, Store tracker, Consumer<String> output) {
         System.out.println("------------ Add Item --------------");
-        String name = input.ask("Enter name Item :");
-        String desc = input.ask("Enter description Item :");
+        String name = input.askToStr("Enter name Item :");
+        String desc = input.askToStr("Enter description Item :");
         Item item = new Item(name, desc, System.currentTimeMillis());
         tracker.add(item);
         System.out.println("------------ Item has been successfully added with Id : " + item.getId() + "-----------");

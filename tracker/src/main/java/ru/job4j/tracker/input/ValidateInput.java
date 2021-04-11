@@ -7,19 +7,21 @@ import ru.job4j.tracker.action.MenuOutException;
  * класс ValidateInput, реализующий интерфейс Input. В нем переопределен метод ask таким образом,
  * что бы обрабатывались исключительные ситуации (при помощи блоков try { … } catch( … ) { … }).
  */
-//public class ValidateInput extends ConsoleInput {
 public class ValidateInput implements Input {
     private final Input input;
 
+    /**
+     * в конструктор передается класс, который реализует формирование данны, например - это класс для консольного ввода
+     * или его имитация. Может даже некий переходной модуль для управления через помок или получения команд из
+     * графической оболочки.
+     * @param input
+     */
     public ValidateInput(final Input input) {
         this.input = input;
     }
 
     @Override
-    public String ask(String question) {
-        return this.input.ask(question);
-    }
-    public int ask(String question, int[] range) {
+    public int askToInt(String question, int[] range) {
 
         /**
          * инициализируем условие выхода из цикла опроса клавиатуры. Если ошибок нет, то клавиатура опрашивается
@@ -43,16 +45,22 @@ public class ValidateInput implements Input {
 
     @Override
     public String askToStr(String question) {
-        return null;
-    }
-
-    @Override
-    public int askToInt(String question, int[] range) {
-        return 0;
+        return this.input.askToStr(question);
     }
 
     @Override
     public int askToInt(String question) {
         return 0;
+    }
+
+    @Override
+    public int askToInt(String question, int max) {
+        int result = 0;
+        int[] range = new int[max + 1];
+        for (int i = 0; i <= max; i++) {
+            range[i] = i;
+        }
+        result = askToInt(question, range);
+        return result;
     }
 }

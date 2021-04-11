@@ -47,15 +47,6 @@ public class MenuTrackerMem {
      */
     public void fillActions(UserAction[] actions) {
         this.actions = actions;
-
-//        this.actions.add(new AddItem(0, "Add new Item"));
-//        this.actions.add(new ShowAllItems(1, "Show all items"));
-//        this.actions.add(new EditItem(2, "Edit item"));
-//        this.actions.add(new DeleteItem(3, "Delete item"));
-//        this.actions.add(new FindItemById(4, "Find item by Id"));
-//        this.actions.add(new FindItemsByName(5, "Find items by name"));
-//        this.actions.add(new ExitProgram(6, "Exit Program"));
-        /*зададим перечень пунктов меню по возрастанию. пункт меню Exit program  перенесем в позицию 0 для удобства*/
     }
 
     /**
@@ -63,10 +54,10 @@ public class MenuTrackerMem {
      *
      * @param key ключ операции
      */
-//    public void select(int key) {
+    public void select(int key) throws Exception {
     //TODO
-//        this.actions.get(key).execute(this.input, this.tracker, output);
-//    }
+        this.actions[key].execute(this.input, this.tracker, output);
+    }
 
     /**
      * Метод выводит на экран меню.
