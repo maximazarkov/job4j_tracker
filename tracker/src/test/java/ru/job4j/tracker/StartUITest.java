@@ -82,7 +82,6 @@ public class StartUITest {
                 item.getId())).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        //assertThat(new String(out.toByteArray()), is(sb.toString()));
         assertThat(this.output.toString(), is(sb.toString()));
     }
 
@@ -106,8 +105,6 @@ public class StartUITest {
                         item.getTime())).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        // TODO .... необходимо добиться работы исполняемых методов, воторые возвращают текст ответов на команду,
-        // соответственно откорректировать и раскомментарий текст ниже
         assertThat(new String(out.toByteArray()), is(sb.toString()));
     }
 
@@ -116,7 +113,6 @@ public class StartUITest {
         Store tracker = new MemTracker();
         Item item = new Item("a", "a", 123L);
         tracker.add(item);
-//        Input input = new StubInput(new String[]{"6", "a", "0"});
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"6", "a", "0"})
         );
@@ -124,8 +120,6 @@ public class StartUITest {
 //        new StartUI(input, tracker, output);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        // TODO .... необходимо добиться работы исполняемых методов, воторые возвращают текст ответов на команду,
-        // соответственно откорректировать и раскомментарий текст ниже
         sb.append("-------------- Find Item by Name --------------").append(LS);
         sb.append(String.format("Item{id='%S', name='%s', desc='%s', time=%s}",
                 item.getId(),
@@ -141,16 +135,12 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws Exception {
         Store tracker = new MemTracker();     // создаём Tracker
-//        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});   //создаём StubInput с последовательностью действий
-//        new StartUI(input, tracker, output);     //   создаём StartUI и вызываем метод init()
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"1",  "test name", "desc", "0"})
         );
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        // TODO .... необходимо добиться работы исполняемых методов, воторые возвращают текст ответов на команду,
-        // соответственно откорректировать и раскомментарий текст ниже
         assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
 
@@ -161,19 +151,12 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = new Item("test name", "desc", System.currentTimeMillis());
         tracker.add(item);
-//        //создаём StubInput с последовательностью действий(производим замену заявки)
-//        Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
-//        // создаём StartUI и вызываем метод init()
-//        new StartUI(input, tracker, output);
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "0"})
         );
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        // TODO .... необходимо добиться работы исполняемых методов, воторые возвращают текст ответов на команду,
-        // соответственно откорректировать и раскомментарий текст ниже
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
 
@@ -184,19 +167,12 @@ public class StartUITest {
         //Напрямую добавляем заявку
         Item item = new Item("test name", "desc", System.currentTimeMillis());
         tracker.add(item);
-//        //создаём StubInput с последовательностью действий(производим замену заявки)
-//        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
-//        // создаём StartUI и вызываем метод init()
-//        new StartUI(input, tracker, output);
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"3", item.getId(), "0"})
         );
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        // TODO .... необходимо добиться работы исполняемых методов, воторые возвращают текст ответов на команду,
-        // соответственно откорректировать и раскомментарий текст ниже
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         Item delItem = null;
         assertThat(tracker.findById(item.getId()), is(delItem));
     }

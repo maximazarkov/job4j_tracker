@@ -8,7 +8,6 @@ import ru.job4j.tracker.tracker.MemTracker;
 import ru.job4j.tracker.tracker.Store;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 
 /**
  * @author Azarkov Maxim
@@ -16,14 +15,6 @@ import java.util.function.Consumer;
  * @since 2.1
  */
 public class StartUI {
-
-    public StartUI() {
-
-    }
-
-    public StartUI(Input input, MemTracker tracker, Consumer<String> output) {
-    }
-
     /**
      * основной цикл программы
      * @param validate - валидный пункт меню. Валибность должна быть проверена заранее.
@@ -32,7 +23,7 @@ public class StartUI {
      */
     void init(Input validate, Store tracker, UserAction[] actions) throws Exception {
         boolean exit = false;
-        MenuTrackerMem menu = new MenuTrackerMem(validate, tracker, System.out::println);
+        MenuTracker menu = new MenuTracker(validate, tracker, System.out::println);
         menu.fillActions(actions);
         while (!exit) {
             menu.show();
@@ -51,11 +42,6 @@ public class StartUI {
         Input validate = new ValidateInput(
                 new ConsoleInput()
         );
-
-        /*
-        * TODO преобразование MenuTracker начнем с того, что начнем перетаскивать и модифицировать меторы с него
-        * в класс StartUI. Модифицировать будем относительно конструкции, заданной в задании.
-        */
         try (Store tracker = new MemTracker()) {
             // Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД, введен код по подключению к БД
             tracker.init();

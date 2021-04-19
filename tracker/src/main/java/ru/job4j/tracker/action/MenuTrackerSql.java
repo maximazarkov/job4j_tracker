@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
+/**
+ * @deprecated use MenuTracker
+ */
 public class MenuTrackerSql {
     private Input input; // хранит ссылку на объект
     private SqlTracker tracker; // хранит ссылку на объект
