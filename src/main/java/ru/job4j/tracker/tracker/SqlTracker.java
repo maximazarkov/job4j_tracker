@@ -25,10 +25,12 @@ public class SqlTracker implements Store {
 
     @Override
     public void init() {
+        Class sqlt1 = SqlTracker.class;
+        ClassLoader cl = sqlt1.getClassLoader();
         try (InputStream in = SqlTracker.
                 class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
-//            assert in != null;
+            assert in != null;
             config.load(in);
             Class.forName(config.getProperty("driver-class-name"));
             cn = DriverManager.getConnection(
@@ -47,7 +49,7 @@ public class SqlTracker implements Store {
 
         try (Statement statement = cn.createStatement()) {
             //Выполним запрос
-            try(ResultSet result = statement.executeQuery(FINDALL_REQUEST)) {
+            try (ResultSet result = statement.executeQuery(FINDALL_REQUEST)) {
                 //result это указатель на первую строку с выборки
                 //чтобы вывести данные мы будем использовать
                 //метод next() , с помощью которого переходим к следующему элементу

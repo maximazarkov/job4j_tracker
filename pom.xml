@@ -13,7 +13,7 @@
     <artifactId>job4j_tracker</artifactId>
 	<!-- здесь мы указываем, как мы собираем проект, например в jar, ear, war
 	или указать pom, если данный pom.xml является родителем для других модулей -->
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 	<!-- укажем версию проекта или библиотеки -->
     <version>2.0</version>
 	<!-- имя проекта -->
@@ -23,22 +23,23 @@
     <url>http://job4j.ru</url>
 
 	<!-- настройка окружения пакета -->
-    <!-- 	<properties>
-            <!- - пропишем версию компилятора, которая должна выполнятся в среде программирования -->
+    <properties>
+            <!-- пропишем версию компилятора, которая должна выполнятся в среде программирования -->
 		<!-- версия компилятора -->
-    <!--        <maven.compiler.source>8</maven.compiler.source>
-           <!- - версия для компилированных файлов -->
-    <!--        <maven.compiler.target>8</maven.compiler.target>
-           <!- - кодировка -->
-    <!--       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            <maven.compiler.source>8</maven.compiler.source>
+           <!-- версия для компилированных файлов -->
+            <maven.compiler.target>8</maven.compiler.target>
+           <!-- кодировка -->
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       </properties>
       -->
 
       <!-- подключим все подпроекты (дочерние pom) -->
+    <!--
     <modules>
         <module>tracker</module>
     </modules>
-
+-->
 
 	<!-- подключим сторонние библиотеки, которые будут нужны в проекте -->
     <dependencies>
@@ -118,6 +119,16 @@
 
                 </dependencies>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <compilerVersion>1.8</compilerVersion>
+                </configuration>
+            </plugin>
+
 			<!-- плагин для сборки javadoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
