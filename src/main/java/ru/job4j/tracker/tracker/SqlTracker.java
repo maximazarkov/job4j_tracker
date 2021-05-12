@@ -1,5 +1,7 @@
 package ru.job4j.tracker.tracker;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.job4j.tracker.Item;
 
 import java.io.InputStream;
@@ -21,12 +23,13 @@ public class SqlTracker implements Store {
 //    private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
     private Connection cn;
 
+    private static final Logger LOG = LoggerFactory.getLogger(SqlTracker.class.getName());
     private static final String FINDALL_REQUEST = "select * from items;";
+    private static final String ADD_REQUEST = "insert into items(name) values(?);";
 
     @Override
     public void init() {
-        Class sqlt1 = SqlTracker.class;
-        ClassLoader cl = sqlt1.getClassLoader();
+        LOG.info("Init...");
         try (InputStream in = SqlTracker.
                 class.getClassLoader().getResourceAsStream("app.properties")) {
             Properties config = new Properties();
@@ -39,7 +42,7 @@ public class SqlTracker implements Store {
                     config.getProperty("password")
             );
         } catch (Exception e) {
-            throw new IllegalStateException(e);  //java.lang.IllegalStateException: java.lang.NullPointerException: inStream parameter is null
+            throw new IllegalStateException(e);
         }
     }
 
@@ -77,22 +80,30 @@ public class SqlTracker implements Store {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//
-//        Iterator<Item> it = items.iterator();
-//        findItems.addAll(items);
         return findItems;
     }
 
     @Override
     public Item add(Item item) {
-
-
-
+        LOG.debug("Insert data, name: {}", item.getName());
+        try (PreparedStatement ps = cn.prepareStatement(ADD_REQUEST)) {
+            ps.setString(1, item.getName());
+            try (ResultSet result = ps.executeQuery()) {
+                if (result.next()) {
+                    LOG.debug("Inserting complete");
+                    item.setId(String.valueOf(result.getInt(1)));
+                    LOG.debug("Generated id: {}", item.getId());
+                } else {
+                    LOG.debug("Inserting is fallen");
+                }
+            }
+        } catch (Exception e) {
+            LOG.debug("Something went wrong", e);
+        }
+        return item;
 //        item.setId(this.generateId());
 //        this.items.add(item);
 //        return item;
-
-        return null;
     }
 
     @Override
