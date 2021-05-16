@@ -12,7 +12,22 @@ public class Item {
 	private String name;
 	private String desc;
 	private long time;
-	
+
+	/**
+	 * конструктор. содает элемент типа Item - заявка.
+	 * @param id
+	 * @param name - имя заявки.
+	 * @param desc - описание заявки.
+	 * @param time - время создания заявки.
+	 * @since 0.2 16.05.2021 SQLTracker
+	 */
+	public Item(String id, String name, String desc, long time) {
+		this.id = id;
+		this.name = name;
+		this.desc = desc;
+		this.time = time;
+	}
+
 	/**
 	*конструктор. содает элемент типа Item - заявка.
 	*@param name - имя заявки.

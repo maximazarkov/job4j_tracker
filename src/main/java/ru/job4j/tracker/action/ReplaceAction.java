@@ -4,6 +4,7 @@ import ru.job4j.tracker.Item;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.tracker.Store;
 
+import java.sql.SQLException;
 import java.util.function.Consumer;
 
 /**
@@ -17,7 +18,7 @@ public class ReplaceAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Store tracker, Consumer<String> output) {
+    public boolean execute(Input input, Store tracker, Consumer<String> output) throws SQLException {
         System.out.println("------------- Edit Item ---------------");
         String id = input.askToStr("Enter the Id Item to change it :");
         String name = input.askToStr("Enter new name Item :");
