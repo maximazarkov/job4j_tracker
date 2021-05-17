@@ -56,12 +56,6 @@
             <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
-        <!-- библиотека для тестирования -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>11.0.2</version>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -78,13 +72,6 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.30</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
             <version>1.7.30</version>
         </dependency>
     </dependencies>
@@ -133,8 +120,6 @@
                         <artifactId>asm</artifactId>
                         <version>6.2</version>
                     </dependency>
-
-
                 </dependencies>
             </plugin>
 
