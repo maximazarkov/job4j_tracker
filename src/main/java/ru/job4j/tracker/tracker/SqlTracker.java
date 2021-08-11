@@ -19,8 +19,8 @@ import java.util.*;
 //3...
 
 public class SqlTracker implements Store {
-//    private final List<Item> items = new ArrayList<>(); // массив для хранение заявок.
-//    private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
+// private final List<Item> items = new ArrayList<>(); // массив для хранение заявок.
+// private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
     private Connection cn;
 
     private static final Logger LOG = LoggerFactory.getLogger(SqlTracker.class.getName());
@@ -92,11 +92,12 @@ public class SqlTracker implements Store {
         LOG.debug("Insert data, name: {}, descript: {}", item.getName(), item.getDesc());
         try (PreparedStatement ps = cn.prepareStatement(ADD_REQUEST)) {
             ps.setString(1, item.getName());
+            ps.setString(2, item.getDesc());
             try (ResultSet result = ps.executeQuery()) {
                 if (result.next()) {
                     LOG.debug("Inserting complete");
                     item.setId(String.valueOf(result.getInt(1)));
-                    LOG.debug("Generated id: {}", item.getId());
+                    LOG.debug("Generated id: 9{}", item.getId());
                 } else {
                     LOG.debug("Inserting is fallen");
                 }

@@ -9,7 +9,7 @@
     <!-- укажем наш сайт - группировка библиотек, например, Job4j.ru выпускает несколько продуктов и мы хотим, чтобы эти проекты все лежали в одной папке ru.job4j. В java обычно используют имя домена, хотя имяможет быть любым. -->
 	<groupId>ru.job4j</groupId>
 	<!-- в артефакте указывают название проекта, например, java-a-to-z или junior -->
-	<!-- artifactId - уникальный ключ нашей библиоткив. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifackId. -->
+	<!-- artifactId - уникальный ключ нашей библиоткив. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifactId. -->
     <artifactId>job4j_tracker</artifactId>
 	<!-- здесь мы указываем, как мы собираем проект, например в jar, ear, war
 	или указать pom, если данный pom.xml является родителем для других модулей -->
@@ -19,16 +19,16 @@
 	<!-- имя проекта -->
     <name>job4j_tracker</name>
 	<!-- доменное имя проекта -->
-	<!-- сочетание goupId + artifactid + version - позволяют найти нужную библиотеку и загрузить ее в проект. -->
+	<!-- сочетание groupId + artifactId + version - позволяют найти нужную библиотеку и загрузить ее в проект. -->
     <url>http://job4j.ru</url>
 
 	<!-- настройка окружения пакета -->
     <properties>
             <!-- пропишем версию компилятора, которая должна выполнятся в среде программирования -->
 		<!-- версия компилятора -->
-            <maven.compiler.source>12</maven.compiler.source>
+            <maven.compiler.source>16</maven.compiler.source>
            <!-- версия для компилированных файлов -->
-            <maven.compiler.target>12</maven.compiler.target>
+            <maven.compiler.target>16</maven.compiler.target>
            <!-- кодировка -->
           <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
@@ -121,15 +121,6 @@
                         <version>6.2</version>
                     </dependency>
                 </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
-                <configuration>
-                    <compilerVersion>1.8</compilerVersion>
-                </configuration>
             </plugin>
 
 			<!-- плагин для сборки javadoc -->
