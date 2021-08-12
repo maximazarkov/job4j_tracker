@@ -33,7 +33,7 @@ public class Triangle {
      * @return - возвращает true, если треугольник можно построить
      */
     public boolean exist(double ab, double ac, double bc) {
-        return ab + ac > bc ? true : false;
+        return (ab + ac > bc) && (ab + bc > ac) && (ac + bc > ab);
     }
 
     /**
