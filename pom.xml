@@ -9,36 +9,36 @@
     <!-- укажем наш сайт - группировка библиотек, например, Job4j.ru выпускает несколько продуктов и мы хотим, чтобы эти проекты все лежали в одной папке ru.job4j. В java обычно используют имя домена, хотя имяможет быть любым. -->
 	<groupId>ru.job4j</groupId>
 	<!-- в артефакте указывают название проекта, например, java-a-to-z или junior -->
-	<!-- artifactId - уникальный ключ нашей библиоткив. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifackId. -->
+	<!-- artifactId - уникальный ключ нашей библиоткив. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifactId. -->
     <artifactId>job4j_tracker</artifactId>
 	<!-- здесь мы указываем, как мы собираем проект, например в jar, ear, war
 	или указать pom, если данный pom.xml является родителем для других модулей -->
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 	<!-- укажем версию проекта или библиотеки -->
     <version>2.0</version>
 	<!-- имя проекта -->
     <name>job4j_tracker</name>
 	<!-- доменное имя проекта -->
-	<!-- сочетание goupId + artifactid + version - позволяют найти нужную библиотеку и загрузить ее в проект. -->
+	<!-- сочетание groupId + artifactId + version - позволяют найти нужную библиотеку и загрузить ее в проект. -->
     <url>http://job4j.ru</url>
 
 	<!-- настройка окружения пакета -->
-    <!-- 	<properties>
-            <!- - пропишем версию компилятора, которая должна выполнятся в среде программирования -->
+    <properties>
+            <!-- пропишем версию компилятора, которая должна выполнятся в среде программирования -->
 		<!-- версия компилятора -->
-    <!--        <maven.compiler.source>8</maven.compiler.source>
-           <!- - версия для компилированных файлов -->
-    <!--        <maven.compiler.target>8</maven.compiler.target>
-           <!- - кодировка -->
-    <!--       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      </properties>
-      -->
+            <maven.compiler.source>16</maven.compiler.source>
+           <!-- версия для компилированных файлов -->
+            <maven.compiler.target>16</maven.compiler.target>
+           <!-- кодировка -->
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
       <!-- подключим все подпроекты (дочерние pom) -->
+    <!--
     <modules>
         <module>tracker</module>
     </modules>
-
+-->
 
 	<!-- подключим сторонние библиотеки, которые будут нужны в проекте -->
     <dependencies>
@@ -53,20 +53,26 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13.1</version>
             <scope>test</scope>
-        </dependency>
-        <!-- библиотека для тестирования -->
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>11.0.2</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.18</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/log4j/log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.30</version>
         </dependency>
     </dependencies>
 
@@ -114,10 +120,9 @@
                         <artifactId>asm</artifactId>
                         <version>6.2</version>
                     </dependency>
-
-
                 </dependencies>
             </plugin>
+
 			<!-- плагин для сборки javadoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
