@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 /**
@@ -12,6 +13,16 @@ public class Item {
 	private String name;
 	private String desc;
 	private long time;
+	private LocalDateTime created = LocalDateTime.now();
+
+	/**
+	 * метод определяет текущее время
+	 * @return - текущее время
+	 */
+	public LocalDateTime getLocalDataTime() {
+
+		return created;
+	}
 
 	/**
 	 * конструктор. содает элемент типа Item - заявка.
