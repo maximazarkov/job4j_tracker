@@ -76,8 +76,7 @@ public class SqlTracker implements Store {
                     findItems.add(new Item(
                             String.valueOf(result.getLong("id_item")),
                             result.getString("name"),
-                            result.getString("descript"),
-                            result.getLong("time")
+                            result.getString("descript")
                     ));
                 }
             }
@@ -152,8 +151,7 @@ public class SqlTracker implements Store {
                     findItems.add(new Item(
                             String.valueOf(result.getLong("id_item")),
                             result.getString("name"),
-                            result.getString("descript"),
-                            result.getLong("time")
+                            result.getString("descript")
                     ));
                 }
             }
@@ -174,8 +172,7 @@ public class SqlTracker implements Store {
                     result = new Item(
                             String.valueOf(rs.getLong("id_item")),
                             rs.getString("name"),
-                            rs.getString("descript"),
-                            rs.getLong("time")
+                            rs.getString("descript")
                     );
                 }
             }

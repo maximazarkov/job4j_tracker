@@ -44,9 +44,11 @@ public class StartUI {
                 new ConsoleInput()
         );
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-        Item itemDate = new Item("123" , "a" , "b", 123);
+        Item itemDate = new Item("123", "a", "b");
 
         System.out.println(itemDate.getLocalDataTime().format(formatter));
+
+        System.out.println(itemDate);
 
         try (Store tracker = new MemTracker()) {
             // Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД, введен код по подключению к БД
