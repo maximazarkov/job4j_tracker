@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import ru.job4j.tracker.action.*;
@@ -11,13 +12,11 @@ import ru.job4j.tracker.tracker.Store;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertThat;
-
 public class StartUITest {
-
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();  // буфер для результата
     private final Consumer<String> output = new Consumer<String>() {        //...
         // сохраним дефолный вывод на консоль, чтобы потом к нему вернуться
@@ -66,7 +65,7 @@ public class StartUITest {
     @Test
     public void whenShowAllItemsMem() throws Exception {
         Store tracker = new MemTracker();     // создаём Tracker
-        Item item = new Item("a", "a", 123L);
+        Item item = new Item("a", "a");
         tracker.add(item);
         /*вызовем FindAllAction() и выйдем из программы*/
         Input validate = new ValidateInput(
@@ -82,13 +81,13 @@ public class StartUITest {
                 item.getId())).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        assertThat(this.output.toString(), is(sb.toString()));
+        Assert.assertEquals(sb.toString(), this.output.toString());
     }
 
     @Test
     public void whenFindItemsById() throws Exception {
         Store tracker = new MemTracker();
-        Item item = new Item("a", "a", 123L);
+        Item item = new Item("a", "a");
         tracker.add(item);
         String idItem = item.getId();
         Input validate = new ValidateInput(
@@ -98,20 +97,20 @@ public class StartUITest {
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
         sb.append("---------------- Search Item by Id ---------------").append(LS);
-        sb.append(String.format("Item{id='%S', name='%s', desc='%s', time=%s}",
+        sb.append(String.format("Item{id='%S', name='%s', desc='%s', created=%s}",
                         item.getId(),
                         item.getName(),
                         item.getDesc(),
-                        item.getTime())).append(LS);
+                        item.getLocalDataTime().format(FORMATTER))).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        assertThat(new String(out.toByteArray()), is(sb.toString()));
+        Assert.assertEquals(sb.toString(), new String(out.toByteArray()));
     }
 
     @Test
     public void whenFindItemsByName() throws Exception {
         Store tracker = new MemTracker();
-        Item item = new Item("a", "a", 123L);
+        Item item = new Item("a", "a");
         tracker.add(item);
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"6", "a", "0"})
@@ -121,15 +120,14 @@ public class StartUITest {
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
         sb.append("-------------- Find Item by Name --------------").append(LS);
-        sb.append(String.format("Item{id='%S', name='%s', desc='%s', time=%s}",
+        sb.append(String.format("Item{id='%S', name='%s', desc='%s', created=%s}",
                 item.getId(),
                 item.getName(),
                 item.getDesc(),
-                item.getTime())).append(LS);
+                item.getLocalDataTime().format(FORMATTER))).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        //assertThat(new String(out.toByteArray()), is(sb.toString()));
-        assertThat(this.output.toString(), is(sb.toString()));
+        Assert.assertEquals(sb.toString(), this.output.toString());
     }
 
     @Test
@@ -141,7 +139,8 @@ public class StartUITest {
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        assertThat(tracker.findAll().get(0).getName(), is("test name")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
+        Assert.assertEquals("test name", tracker.findAll().get(0).getName());
     }
 
     @Test
@@ -149,7 +148,7 @@ public class StartUITest {
         // создаём Tracker
         Store tracker = new MemTracker();
         //Напрямую добавляем заявку
-        Item item = new Item("test name", "desc", System.currentTimeMillis());
+        Item item = new Item("test name", "desc");
         tracker.add(item);
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "0"})
@@ -157,7 +156,7 @@ public class StartUITest {
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
+        Assert.assertEquals("test replace", tracker.findById(item.getId()).getName());
     }
 
     @Test
@@ -165,7 +164,7 @@ public class StartUITest {
         // создаём Tracker
         Store tracker = new MemTracker();
         //Напрямую добавляем заявку
-        Item item = new Item("test name", "desc", System.currentTimeMillis());
+        Item item = new Item("test name", "desc");
         tracker.add(item);
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"3", item.getId(), "0"})
@@ -174,7 +173,7 @@ public class StartUITest {
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
         Item delItem = null;
-        assertThat(tracker.findById(item.getId()), is(delItem));
+        Assert.assertEquals(delItem, tracker.findById(item.getId()));
     }
 
 
