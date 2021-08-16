@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 /**
@@ -12,25 +13,54 @@ public class Item {
 	private String id;
 	private String name;
 	private String desc;
+	/**
+	 * @deprecated - необходимо во всех классах переделать long time на LocalDataTime created
+	 */
 	private long time;
-	private LocalDateTime created = LocalDateTime.now();
+
+	private final LocalDateTime created = LocalDateTime.now();
+	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
 	/**
 	 * метод определяет текущее время
 	 * @return - текущее время
 	 */
 	public LocalDateTime getLocalDataTime() {
-
 		return created;
 	}
 
 	/**
 	 * конструктор. содает элемент типа Item - заявка.
-	 * @param id
+	 * @param id - id заявки
+	 * @param name - название заявки
+	 * @param desc - описание заявки
+	 * @since 0.3 16.08.2021 TrackerUI
+	 */
+	public Item(String id, String name, String desc) {
+		this.id = id;
+		this.name = name;
+		this.desc = desc;
+	}
+
+	/**
+	 * конструктор. содает элемент типа Item - заявка.
+	 * @param name - название заявки
+	 * @param desc - описание заявки
+	 * @since 0.3 16.08.2021 TrackerUI
+	 */
+	public Item(String name, String desc) {
+		this.name = name;
+		this.desc = desc;
+	}
+
+	/**
+	 * конструктор. содает элемент типа Item - заявка.
+	 * @param id - id заявки
 	 * @param name - имя заявки.
 	 * @param desc - описание заявки.
 	 * @param time - время создания заявки.
 	 * @since 0.2 16.05.2021 SQLTracker
+	 * @deprecated
 	 */
 	public Item(String id, String name, String desc, long time) {
 		this.id = id;
@@ -45,6 +75,7 @@ public class Item {
 	*@param desc - описание заявки.
 	*@param time - время создания заявки.
 	*@since 0.1.
+	* @deprecated
 	*/
 	public Item(String name, String desc, long time) {
 		this.name = name;
@@ -143,7 +174,11 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item{" + "id='" + id + "\', name='" + name + '\'' + ", desc='" + desc + '\'' + ", time=" + time + '}';
+		return "Item{"
+				+ "id='" + id
+				+ "\', name='" + name
+				+ '\'' + ", desc='" + desc
+				+ '\'' + ", created=" + created.format(FORMATTER) + '}';
 	}
 
 }
