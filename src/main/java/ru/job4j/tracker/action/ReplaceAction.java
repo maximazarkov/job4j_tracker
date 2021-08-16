@@ -23,7 +23,7 @@ public class ReplaceAction implements UserAction {
         String id = input.askToStr("Enter the Id Item to change it :");
         String name = input.askToStr("Enter new name Item :");
         String desc = input.askToStr("Enter new Description :");
-        Item item = new Item(name, desc, System.currentTimeMillis());
+        Item item = new Item(name, desc);
         if (tracker.replace(id, item)) {
             System.out.println("------------- The Item has been edited --------------");
             return true;
