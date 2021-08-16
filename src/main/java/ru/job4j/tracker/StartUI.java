@@ -8,6 +8,7 @@ import ru.job4j.tracker.tracker.MemTracker;
 import ru.job4j.tracker.tracker.Store;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author Azarkov Maxim
@@ -42,6 +43,11 @@ public class StartUI {
         Input validate = new ValidateInput(
                 new ConsoleInput()
         );
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
+        Item itemDate = new Item("123" , "a" , "b", 123);
+
+        System.out.println(itemDate.getLocalDataTime().format(formatter));
+
         try (Store tracker = new MemTracker()) {
             // Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД, введен код по подключению к БД
             tracker.init();
