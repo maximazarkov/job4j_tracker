@@ -4,17 +4,17 @@ import ru.job4j.tracker.action.MenuOutException;
 
 import java.util.Scanner;
 /**
- * Класс, для организации работы консольного ввода каманд от пользователя
+ * Класс, для организации работы консольного ввода команд от пользователя
  * @author azarkov m.n.
  * @version v.0.1 11.04.2021
  */
 public class ConsoleInput implements Input {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     /**
-     * метод для получения данных с клавиатуры через консоль
+     * Метод для получения данных с клавиатуры через консоль
      * @param question - Вопрос пользователю
-     * @return - возвращает введенное пользователем значение  в формате String
+     * @return - возвращает введенное пользователем значение в формате String
      */
     @Override
     public String askToStr(String question) {
@@ -23,16 +23,16 @@ public class ConsoleInput implements Input {
     }
 
     /**
-     * метод проверки введенного значени меню на вхождение его в диапазоно допустимых значений
-     * @param question - Вопрос пользователю
-     * @param range - диапазон допустимых занчений меню
-     * @return - возвращаем числовое значение меню
+     * Метод проверки введенного значения меню на вхождение его в диапазоне допустимых значений.
+     * @param question - Вопрос пользователю;
+     * @param range - диапазон допустимых значений меню;
+     * @return - возвращаем числовое значение меню.
      */
     @Override
     public int askToInt(String question, int[] range) {
         int key = Integer.parseInt(this.askToStr(question));
         boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой
-        // провгоним значние через диапазон меню
+        // прогоним значение через диапазон меню
         for (int value : range) {
             if (value == key) {
                 exist = true;
