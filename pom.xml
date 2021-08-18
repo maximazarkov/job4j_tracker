@@ -74,6 +74,13 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.32</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-shade-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+
     </dependencies>
 
 	<!-- подключитм плагины для maven -->
@@ -121,6 +128,39 @@
                         <version>6.2</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+
+            <!--
+            Очень важной настройкой, которую можно определить в файле MANIFEST.MF является точка входа в приложение,
+        т.е. в нашем понимании это метод main(), который запускает все приложение. Если мы посмотрим на проект tracker,
+        то это будет класс StartUI.
+            В этой задаче не будем рассказывать, как редактировать файл MANIFEST.MF. Достаточно указать,
+        что для его генерации с предустановленными настройками можно использовать плагин Apache Maven Shade Plugin,
+        официальная документация находится тут:
+        https://maven.apache.org/plugins/maven-shade-plugin/index.html
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.2</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <!-- имя нашего архива jar -->
+                            <finalName>tracker</finalName>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <!-- а это метод, котрый пропишется в монифест как точка фхода -->
+                                    <mainClass>ru.job4j.tracker.StartUI</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
 			<!-- плагин для сборки javadoc -->
