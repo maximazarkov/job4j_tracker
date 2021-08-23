@@ -16,12 +16,36 @@ public class FindEl {
         return rsl;
     }
 
+    public static boolean sent(String value, String[] abuses) throws ElementAbuseExtension {
+        /* if contains throw ElementAbuseException */
+        for (String el : abuses) {
+            if (value.equals(el)) {
+                throw new ElementAbuseExtension("Abuses contains values: " + el);
+            }
+        }
+        return true;
+    }
+
+    public static void process(String[] values, String key, String[] abuses) {
+        try {
+            if (indexOf(values, key) != -1) {
+                sent(key, abuses);
+            }
+        } catch (ElementAbuseExtension ea) {
+            ea.printStackTrace();
+        } catch (ElementNotFoundException en) {
+            en.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } catch (Throwable th) {
+            th.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) throws ElementNotFoundException {
         String[] array = new String[] {"aaa", "bbb", "ccc"};
-        try {
-            indexOf(array, "ddd");
-        } catch (ElementNotFoundException e) {
-            e.printStackTrace();
-        }
+        String key = "ccc";
+        String[] abuses = {"ddd", "ccc"};
+        process(array, key, abuses);
     }
 }
