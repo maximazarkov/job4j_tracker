@@ -92,7 +92,7 @@
                 <!-- версия плагина -->
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.4</version>
+                <version>0.8.6</version>
                 <executions>
                     <!-- настройка запуска задачи анализа кода на покрытие -->
                     <execution>
