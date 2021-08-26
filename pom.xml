@@ -4,12 +4,12 @@
 
     <!-- Версия модели описания  Maven. Это не версия maven, а именно модель. -->
 	<!-- Версия Maven: 3.х. Версия модели maven: 4.0.0 -->
-	<!-- modelVersion укахывает, как Maven должен интерпретировать pom.xml. -->
+	<!-- modelVersion указывает, как Maven должен интерпретировать pom.xml. -->
 	<modelVersion>4.0.0</modelVersion>
-    <!-- укажем наш сайт - группировка библиотек, например, Job4j.ru выпускает несколько продуктов и мы хотим, чтобы эти проекты все лежали в одной папке ru.job4j. В java обычно используют имя домена, хотя имяможет быть любым. -->
+    <!-- укажем наш сайт - группировка библиотек, например, Job4j.ru выпускает несколько продуктов и мы хотим, чтобы эти проекты все лежали в одной папке ru.job4j. В java обычно используют имя домена, хотя имя может быть любым. -->
 	<groupId>ru.job4j</groupId>
 	<!-- в артефакте указывают название проекта, например, java-a-to-z или junior -->
-	<!-- artifactId - уникальный ключ нашей библиоткив. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifactId. -->
+	<!-- artifactId - уникальный ключ нашей библиотеки. Уникальность должна обеспечиваться сочетанием двух ключей groupId и artifactId. -->
     <artifactId>job4j_tracker</artifactId>
 	<!-- здесь мы указываем, как мы собираем проект, например в jar, ear, war
 	или указать pom, если данный pom.xml является родителем для других модулей -->
@@ -78,12 +78,12 @@
         <dependency>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-shade-plugin</artifactId>
-            <version>3.2.2</version>
+            <version>3.2.4</version>
         </dependency>
 
     </dependencies>
 
-	<!-- подключитм плагины для maven -->
+	<!-- Подключим плагины для maven -->
 	<!-- Петр обещал про плагины снять отдельное видео -->
 	<build>
         <plugins>
@@ -154,7 +154,7 @@
                             <finalName>tracker</finalName>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <!-- а это метод, котрый пропишется в монифест как точка фхода -->
+                                    <!-- а это метод, который пропишется в манифест как точка входа -->
                                     <mainClass>ru.job4j.tracker.StartUI</mainClass>
                                 </transformer>
                             </transformers>
@@ -173,23 +173,14 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.17</version>
-				<executions>
-					<execution>
-						<id>validate</id>
-						<phase>validate</phase>
-						<configuration>
-							<configLocation>checkstyle.xml</configLocation>
-							<encoding>UTF-8</encoding>
-							<consoleOutput>true</consoleOutput>
-							<failsOnError>true</failsOnError>
-							<includeTestSourceDirectory>true</includeTestSourceDirectory>
-						</configuration>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
+				<version>3.1.2</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>8.30</version>
+                    </dependency>
+                </dependencies>
 			</plugin>
 		</plugins>
     </build>
