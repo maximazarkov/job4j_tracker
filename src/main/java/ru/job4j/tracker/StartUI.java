@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class StartUI {
     /**
      * основной цикл программы
-     * @param validate - валидный пункт меню. Валибность должна быть проверена заранее.
+     * @param validate - валидный пункт меню. Валидность должна быть проверена заранее.
      * @param tracker - модель трекера для сохранения данных
      * @param actions - список меню
      */
@@ -53,7 +53,7 @@ public class StartUI {
         try (Store tracker = new MemTracker()) {
             // Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД, введен код по подключению к БД
             tracker.init();
-            /*зададим перечень пунктов меню по возрастанию. Пункт меню Exit program  перенесем в позицию 0 для удобства*/
+            /* Зададим перечень пунктов меню по возрастанию. Пункт меню Exit program перенесем в позицию 0 для удобства*/
             UserAction[] actions = {
                     new ExitAction(),
                     new CreateAction(),

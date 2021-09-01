@@ -25,7 +25,7 @@ public class Item {
 	}
 
 	/**
-	 * конструктор. содает элемент типа Item - заявка.
+	 * Конструктор. Создает элемент типа Item - заявка.
 	 * @param id - id заявки
 	 * @param name - название заявки
 	 * @param desc - описание заявки
@@ -38,7 +38,7 @@ public class Item {
 	}
 
 	/**
-	 * конструктор. содает элемент типа Item - заявка.
+	 * Конструктор. Создает элемент типа Item - заявка.
 	 * @param name - название заявки
 	 * @param desc - описание заявки
 	 * @since 0.3 16.08.2021 TrackerUI
@@ -49,7 +49,7 @@ public class Item {
 	}
 
 	/**
-	 * setId - принимает значение уникального ключа заявки. уникальный ключ заявки - id элемента массива Item.
+	 * setId - принимает значение уникального ключа заявки. Уникальный ключ заявки - id элемента массива Item.
 	 * Генерируется с помощью hash-функции.
 	 * @param id - значение уникального ключа заявки типа String.
 	 * @since 0.1.
@@ -87,7 +87,7 @@ public class Item {
 
 	/**
 	*setDesc - принимает описание заявки.
-	*@param desc - значение значение описания заявки типа String.
+	*@param desc - Значение описания заявки типа String.
 	*@since 0.1.
 	*/
 	public void setDesc(String desc) {
@@ -124,7 +124,7 @@ public class Item {
 	public String toString() {
 		return "Item{"
 				+ "id='" + id
-				+ "\', name='" + name
+				+ "', name='" + name
 				+ '\'' + ", desc='" + desc
 				+ '\'' + ", created=" + created.format(FORMATTER) + '}';
 	}

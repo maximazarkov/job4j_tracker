@@ -6,8 +6,8 @@ import ru.job4j.tracker.tracker.Store;
 import java.util.function.Consumer;
 
 public class MenuTracker {
-    private Input input; // хранит ссылку на объект
-    private Store tracker; // хранит ссылку на объект
+    private final Input input; // хранит ссылку на объект
+    private final Store tracker; // хранит ссылку на объект
 //    private List<UserAction> actionsList = new ArrayList<>(); // хранит ссылку на массив типа UserAction
     private UserAction[] actions; // хранит ссылку на массив типа UserAction
 
@@ -23,7 +23,7 @@ public class MenuTracker {
      * Конструктор.
      * @param input   объект типа Input
      * @param tracker объект типа Tracker
-     * @param output
+     * @param output - лямбда выражение - определяет формат выводимой информации.
      */
     public MenuTracker(Input input, Store tracker, Consumer<String> output) {
         this.input = input;
@@ -34,8 +34,9 @@ public class MenuTracker {
     /**
      * Метод для получения длинны массива меню.
      * @return длину массива
+     * @deprecated - остался от прошлых версий класса. Не рекомендуется применять.
      */
-    public int getActionsLentgh() {
+    public int getActionsLength() {
         return this.actions.length;
     }
 
@@ -47,7 +48,7 @@ public class MenuTracker {
     }
 
     /**
-     * Метод в зависимости от указанного ключа, выполняет соотвествующие действие.
+     * Метод в зависимости от указанного ключа, выполняет соответствующие действие.
      *
      * @param key ключ операции
      */

@@ -18,8 +18,8 @@ import java.util.function.Consumer;
 public class StartUITest {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();  // буфер для результата
-    private final Consumer<String> output = new Consumer<String>() {        //...
-        // сохраним дефолный вывод на консоль, чтобы потом к нему вернуться
+    private final Consumer<String> output = new Consumer<>() {        //...
+        // сохраним дефолтный вывод на консоль, чтобы потом к нему вернуться
         private final PrintStream stdout = new PrintStream(out);
         @Override
         public void accept(String s) {
