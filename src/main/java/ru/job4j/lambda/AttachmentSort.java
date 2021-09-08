@@ -26,7 +26,14 @@ public class AttachmentSort {
         // для сравнения выполним анонимный класс в виде lambda.
 //        Comparator<Attachment> comparatorName = (o1, o2) -> o1.getName().compareTo(o2.getName());
         // ну и трансформируем дальше
-        Comparator<Attachment> comparatorName = Comparator.comparing(Attachment::getName);
+//        Comparator<Attachment> comparatorName = Comparator.comparing(Attachment::getName);
+        // и все же выполнил по заданию
+        Comparator<Attachment> comparatorName = new Comparator<Attachment>() {
+            @Override
+            public int compare(Attachment o1, Attachment o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
         attachments.sort(comparatorName);
         System.out.println(attachments);
     }
