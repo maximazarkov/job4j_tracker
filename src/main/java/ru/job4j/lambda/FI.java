@@ -15,5 +15,15 @@ public class FI {
         Arrays.sort(atts, comparator);
         Comparator<String> cmpText = (left, right) -> left.compareTo(right) ;
         Comparator<String> cmpDescSize = (left, right) -> right.compareTo(left) ;
+
+        String[] names = {
+                "Ivan",
+                "Petr"
+        };
+        Comparator<String> lengthCmp = (left, right) -> {
+            System.out.println("execute comparator");
+            return left.length() - right.length();
+        };
+        Arrays.sort(names, lengthCmp);
     }
 }
