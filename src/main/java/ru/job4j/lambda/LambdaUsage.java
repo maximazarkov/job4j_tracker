@@ -30,12 +30,12 @@ public class LambdaUsage {
         // стало
         Comparator<Attachment> comp = (left, right) -> {
             System.out.println("compare - " + left.getSize() + " : " + right.getSize());
-            return left.getSize() - right.getSize();
+            return Integer.compare(left.getSize(), right.getSize());
         };
 
         Comparator<String> cmpDescSizeLog = (left, right) -> {
             System.out.println((right.length() > left.length()) ? "right > left" : "right < left");
-            return right.length() - left.length();
+            return Integer.compare(right.length(), left.length());
         };
 
         Arrays.sort(numbers, cmpDescSizeLog);
