@@ -25,8 +25,7 @@ public class Card {
             }
         }
 
-        List<Card> cards = new ArrayList<>();
-        cards = Stream.of(Suit.values())
+        List<Card> cards = Stream.of(Suit.values())
                 .flatMap(s -> Stream.of(Value.values())
                         .map(v -> new Card(s, v)))
                 .collect(Collectors.toList());
