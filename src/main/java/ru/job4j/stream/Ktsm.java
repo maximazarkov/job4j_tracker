@@ -1,20 +1,16 @@
 package ru.job4j.stream;
 
-// Устройство КТСМ - специальный железнодорожный комплекс по обнаружению нагретых буксовых узлов. Состоит из разных подсистем. Некоторые подсистемы могут отсутствовать.
-
 public class Ktsm {
-    private final String type;            // Тип КТСМ. блок базовый
-    private final long id;                // Серийный номер, id
-    private boolean ethernetPort;   // наличие Ethernet порта
-    private String typeB;           // Подсистема контроля букс (опционально)
-    private String typeSktr;        // Подсистема контроля температуры рельс
+    private final String type;
+    private final long id;
+    private final boolean ethernetPort;
+    private final String typeB;
+    private final String typeSktr;
 
     public static class Builder {
-        // необходимые параметры
         private final String type;
         private final long id;
 
-        // необязательные параметры (по умолчанию)
         private boolean ethernetPort = false;
         private String typeB = null;
         private String typeSktr = null;
@@ -42,7 +38,6 @@ public class Ktsm {
         public Ktsm build() {
             return new Ktsm(this);
         }
-
     }
 
     public Ktsm(Builder builder) {
