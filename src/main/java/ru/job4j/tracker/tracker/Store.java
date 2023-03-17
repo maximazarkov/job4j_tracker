@@ -35,8 +35,12 @@ public interface Store extends AutoCloseable {
      * @throws SQLException возможны исключения при работе с внешними системами.
      */
     boolean replace(String id, Item item) throws SQLException;
+
     boolean delete(String id);
+
     List<Item> findAll() throws SQLException;
+
     List<Item> findByName(String key);
+
     Item findById(String id);
 }

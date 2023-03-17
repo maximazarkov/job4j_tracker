@@ -16,7 +16,6 @@ public class Shop {
                 "БП-2М",
                 "2020-10");
 
-
         Product[] products = new Product[5];
         products[0] = bolometr1;
         products[1] = bolometr2;

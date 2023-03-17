@@ -1,8 +1,8 @@
 package ru.job4j.oop;
 
-import org.junit.Test;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.closeTo;
+import org.assertj.core.data.Percentage;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class PointTest {
 
@@ -12,6 +12,6 @@ public class PointTest {
         Point b = new Point(4, 0, 0);
         double ab3d = a.distance3d(b);
         double rsl = 4;
-        assertThat(rsl, closeTo(ab3d, 0.001));
+        assertThat(rsl).isCloseTo((Double) ab3d, Percentage.withPercentage(0.001));
     }
 }

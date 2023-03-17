@@ -12,6 +12,10 @@ import java.util.function.Consumer;
  */
 public class FindByNameAction implements UserAction {
 
+    public FindByNameAction() {
+        super();
+    }
+
     @Override
     public String nameMenu() {
         return "Find Items By Name";
@@ -29,10 +33,6 @@ public class FindByNameAction implements UserAction {
         }
         System.out.println("---------------------------------------------------");
         return true;
-    }
-
-    public FindByNameAction() {
-        super();
     }
 
     @Override

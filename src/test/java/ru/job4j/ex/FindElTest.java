@@ -1,18 +1,19 @@
 package ru.job4j.ex;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FindElTest {
-    @Test (expected = ElementNotFoundException.class)
+    @Test
     public void whenNotElementThenFinish() throws ElementNotFoundException {
         String[] array = new String[] {"aaa", "bbb", "ccc"};
-        FindEl.indexOf(array, "ddd");
+        assertThrows(ElementNotFoundException.class, () -> FindEl.indexOf(array, "ddd"));
     }
 
     @Test
     public void whenFindElementThenOk() throws ElementNotFoundException {
         String[] array = new String[] {"aaa", "bbb", "ccc"};
-        Assert.assertEquals(1, FindEl.indexOf(array, "bbb"));
+        assertThat(1).isEqualTo(FindEl.indexOf(array, "bbb"));
     }
 }

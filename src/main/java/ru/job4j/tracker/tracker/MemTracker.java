@@ -9,19 +9,16 @@ import java.util.*;
  * @since 10.02.2021 v0.2
  */
 public class MemTracker implements Store {
-    private final List<Item> items = new ArrayList<>(); // массив для хранение заявок.
-	private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
+	private static final Random RN = new Random();
+    private final List<Item> items = new ArrayList<>();
 
 	@Override
-	public void init() {
-
-	}
+	public void init() { }
 
 	/**
 	 * Метод реализующий добавление заявки
-	 * @param item - принимает обект, сохраняет его в памяти добавляя новые параметры и
-	 *             возвращзает этот же объект но с присвоенным id.
-	 * @return
+	 * @param item - принимает объект, сохраняет его в памяти добавляя новые параметры.
+	 * @return item - возвращает этот же объект, но с присвоенным id.
 	 */
 	@Override
 	public Item add(Item item) {
@@ -31,8 +28,8 @@ public class MemTracker implements Store {
 	}
 
 	 /**
-     * Метод реализаущий редактирование заявок в хранилище по уникальному ключу.
-	 * @param id уникальный ключ заяки.
+     * Метод реализующий редактирование заявок в хранилище по уникальному ключу.
+	 * @param id уникальный ключ заявки.
      * @param item новая заявка.
      */
 	 @Override
@@ -53,8 +50,8 @@ public class MemTracker implements Store {
 	}
 
 	/**
-     * Метод реализаущий удаление заявок в хранилище.
-	 * @param id уникальный ключ заяки.
+     * Метод реализующий удаление заявок в хранилище.
+	 * @param id уникальный ключ заявки.
      */
 	@Override
 	public boolean delete(String id) {
@@ -119,7 +116,8 @@ public class MemTracker implements Store {
 	
     /**
      * Метод генерирует уникальный ключ для заявки.
-     * Так как у заявки нет уникальности полей, имени и описание. Для идентификации нам нужен уникальный ключ.
+     * Так как у заявки нет уникальности полей, имени и описание.
+	 * Для идентификации нам нужен уникальный ключ.
      * @return Уникальный ключ.
      */
     private String generateId() {
@@ -127,7 +125,8 @@ public class MemTracker implements Store {
     }
 
 	/**
-	 * Данный класс при работе с памятью не требуется, по этому он не реализован. Наследует AutoClosable
+	 * Данный класс при работе с памятью не требуется, по этому он не реализован.
+	 * Наследует AutoClosable
 	 * @throws Exception
 	 */
 	@Override

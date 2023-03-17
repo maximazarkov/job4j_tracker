@@ -64,8 +64,7 @@ public class User {
             user.gender = gender;
             return user;
         }
-    };
-
+    }
 
     public static void main(String[] args) {
         User user = new Builder().buildName("name")
@@ -81,14 +80,14 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", age=" + age +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", activated=" + activated +
-                ", gender='" + gender + '\'' +
-                '}';
+        return "User{"
+                + "name='" + name + '\''
+                + ", surname='" + surname + '\''
+                + ", age=" + age
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", activated=" + activated
+                + ", gender='" + gender + '\''
+                + '}';
     }
 }

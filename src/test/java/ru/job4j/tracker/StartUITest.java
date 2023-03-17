@@ -1,8 +1,7 @@
 package ru.job4j.tracker;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
+import static org.assertj.core.api.Assertions.*;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.StubInput;
@@ -16,7 +15,18 @@ import java.time.format.DateTimeFormatter;
 import java.util.function.Consumer;
 
 public class StartUITest {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
+
+    private final static String LS = System.lineSeparator();
+    private final static String MENU = new StringBuilder()
+            .append("1. Add Item").append(LS)
+            .append("2. Edit Item").append(LS)
+            .append("3. Delete Item").append(LS)
+            .append("4. Show all Items").append(LS)
+            .append("5. Find action by Id").append(LS)
+            .append("6. Find Items By Name").append(LS)
+            .append("0. Exit program").toString();
+    private static final DateTimeFormatter FORMATTER =
+            DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();  // буфер для результата
     private final Consumer<String> output = new Consumer<>() {        //...
         // сохраним дефолтный вывод на консоль, чтобы потом к нему вернуться
@@ -32,16 +42,6 @@ public class StartUITest {
         }
     };
 
-    private final static String LS = System.lineSeparator();
-    private final static String MENU = new StringBuilder()
-        .append("1. Add Item").append(LS)
-        .append("2. Edit Item").append(LS)
-        .append("3. Delete Item").append(LS)
-        .append("4. Show all Items").append(LS)
-        .append("5. Find action by Id").append(LS)
-        .append("6. Find Items By Name").append(LS)
-        .append("0. Exit program").toString();
-
     private final UserAction[] actions = {
             new ExitAction(),
             new CreateAction(),
@@ -52,7 +52,7 @@ public class StartUITest {
             new FindByNameAction()
     };
 
-    @Before
+    @BeforeEach
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
@@ -81,7 +81,7 @@ public class StartUITest {
                 item.getId())).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        Assert.assertEquals(sb.toString(), this.output.toString());
+        assertThat(sb.toString()).isEqualTo(this.output.toString());
     }
 
     @Test
@@ -104,7 +104,7 @@ public class StartUITest {
                         item.getLocalDataTime().format(FORMATTER))).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        Assert.assertEquals(sb.toString(), new String(out.toByteArray()));
+        assertThat(sb.toString()).isEqualTo(new String(out.toByteArray()));
     }
 
     @Test
@@ -127,7 +127,7 @@ public class StartUITest {
                 item.getLocalDataTime().format(FORMATTER))).append(LS);
         sb.append("---------------------------------------------------").append(LS);
         sb.append(MENU).append(LS);
-        Assert.assertEquals(sb.toString(), this.output.toString());
+        assertThat(sb.toString()).isEqualTo(this.output.toString());
     }
 
     @Test
@@ -140,7 +140,7 @@ public class StartUITest {
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
         // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-        Assert.assertEquals("test name", tracker.findAll().get(0).getName());
+        assertThat("test name").isEqualTo(tracker.findAll().get(0).getName());
     }
 
     @Test
@@ -151,12 +151,13 @@ public class StartUITest {
         Item item = new Item("test name", "desc");
         tracker.add(item);
         Input validate = new ValidateInput(
-                new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "0"})
+                new StubInput(
+                        new String[]{"2", item.getId(), "test replace", "заменили заявку", "0"})
         );
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        Assert.assertEquals("test replace", tracker.findById(item.getId()).getName());
+        assertThat("test replace").isEqualTo(tracker.findById(item.getId()).getName());
     }
 
     @Test
@@ -173,8 +174,6 @@ public class StartUITest {
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
         Item delItem = null;
-        Assert.assertEquals(delItem, tracker.findById(item.getId()));
+        assertThat(delItem).isEqualTo(tracker.findById(item.getId()));
     }
-
-
 }

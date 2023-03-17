@@ -1,12 +1,12 @@
 package ru.job4j.ex;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CountTest {
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void whenStartGreaterThenFinish() {
-        Count.add(10, 2);
+        assertThrows(IllegalArgumentException.class, () -> Count.add(10, 2));
     }
 }

@@ -1,7 +1,7 @@
 package ru.job4j.pojo;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class ShopTest {
 
@@ -22,7 +22,7 @@ public class ShopTest {
                 "2020-10");
         int exp = 2;
         int rsl = Shop.indexOfNull(products);
-        Assert.assertEquals(exp, rsl);
+        assertThat(exp).isEqualTo(rsl);
     }
 
     @Test
@@ -35,7 +35,7 @@ public class ShopTest {
                 "2020-10");
         int exp = 0;
         int rsl = Shop.indexOfNull(products);
-        Assert.assertEquals(exp, rsl);
+        assertThat(exp).isEqualTo(rsl);
     }
 
     @Test
@@ -48,6 +48,6 @@ public class ShopTest {
                 "2020-10");
         int exp = -1;
         int rsl = Shop.indexOfNull(products);
-        Assert.assertEquals(exp, rsl);
+        assertThat(exp).isEqualTo(rsl);
     }
 }

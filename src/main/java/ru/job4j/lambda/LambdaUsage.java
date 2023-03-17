@@ -6,8 +6,7 @@ import java.util.Comparator;
 public class LambdaUsage {
 
     public static void main(String[] args) {
-        Comparator<String> cmpText1 = (left, right) -> left.compareTo(right) ;
-        //или
+        Comparator<String> cmpText1 = (left, right) -> left.compareTo(right);
         Comparator<String> cmpText2 = String::compareTo;
 
         Comparator<String> cmpDescSize = (left, right) -> (left.length() - right.length());

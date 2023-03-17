@@ -13,8 +13,8 @@ public class FI {
         };
         Comparator<Attachment> comparator = (left, right) -> left.getSize() - right.getSize();
         Arrays.sort(atts, comparator);
-        Comparator<String> cmpText = (left, right) -> left.compareTo(right) ;
-        Comparator<String> cmpDescSize = (left, right) -> right.compareTo(left) ;
+        Comparator<String> cmpText = (left, right) -> left.compareTo(right);
+        Comparator<String> cmpDescSize = (left, right) -> right.compareTo(left);
 
         String[] names = {
                 "Ivan",

@@ -21,7 +21,8 @@ public class StartUISQL {
 //    private final SqlTracker tracker; // Хранилище заявок
 //
 //    /**
-//     * Реализация вывода данных с помощью Consumer. С помощью лямбда будет передана функция println
+//     * Реализация вывода данных с помощью Consumer.
+//     С помощью лямбда будет передана функция println
 //     * @since 11.10.2019 0.2
 //     */
 //    private final Consumer<String> output;
@@ -41,7 +42,8 @@ public class StartUISQL {
 //    }
 
     /**
-     * Основой цикл программы.
+     * Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД,
+     * введен код по подключению к БД
      */
     private void init(Input validate, Store tracker, UserAction[] actions) throws Exception {
         boolean exit = false;
@@ -73,9 +75,8 @@ public class StartUISQL {
                 new ConsoleInput()
         );
         try (Store tracker = new SqlTracker()) {
-            // Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД, введен код по подключению к БД
             tracker.init();
-            /*зададим перечень пунктов меню по возрастанию. Пункт меню Exit program  перенесем в позицию 0 для удобства*/
+
             UserAction[] actions = {
                     new ExitAction(),
                     new CreateAction(),

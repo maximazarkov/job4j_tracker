@@ -14,22 +14,29 @@ import java.util.*;
  * @since 12.04.2021 v0.1
  */
 //Для использования SQL запросов существуют 3 типа объектов:
-//1.Statement: используется для простых случаев без параметров. Данный тип применен в методе findAll()
+//1.Statement: используется для простых случаев без параметров.
+// Данный тип применен в методе findAll()
 //2...
 //3...
 
 public class SqlTracker implements Store {
-// private final List<Item> items = new ArrayList<>(); // массив для хранение заявок.
-// private static final Random RN = new Random(); // ссылка на объект, для генерации случайных чисел.
-    private Connection cn;
-
     private static final Logger LOG = LoggerFactory.getLogger(SqlTracker.class.getName());
     private static final String FINDALL_REQUEST = "select * from item;";
     private static final String ADD_REQUEST = "insert into item(name, descript) values(?, ?);";
-    private static final String REPLACE_REQUEST = "update item set name=?, descript = ? where id_item = ?;";
+    private static final String REPLACE_REQUEST =
+            "update item set name=?, descript = ? where id_item = ?;";
     private static final String DELETE_REQUEST = "delete from item where id_item = ?;";
     private static final String FINDBYNAME_REQUEST = "select * from items where name like ?;";
     private static final String FINDBYID_REQUEST = "select * from items where id = ?;";
+    private Connection cn;
+
+    public SqlTracker() {
+        init();
+    }
+
+    public SqlTracker(Connection cn) {
+        this.cn = cn;
+    }
 
     @Override
     public void init() {
@@ -110,7 +117,8 @@ public class SqlTracker implements Store {
     @Override
     public boolean replace(String id, Item item) {
         boolean result = false;
-        LOG.debug("Replace data. id: {}, name: {}, descript: {}", id,  item.getName(), item.getDesc());
+        LOG.debug("Replace data. id: {}, name: {}, descript: {}",
+                id,  item.getName(), item.getDesc());
         try (PreparedStatement ps = cn.prepareStatement(REPLACE_REQUEST)) {
             ps.setString(1, item.getName());
             ps.setString(2, item.getDesc());
@@ -136,8 +144,6 @@ public class SqlTracker implements Store {
         }
         return result;
     }
-
-
 
     @Override
     public List<Item> findByName(String key) {

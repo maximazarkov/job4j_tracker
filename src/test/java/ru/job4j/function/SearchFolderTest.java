@@ -1,8 +1,7 @@
 package ru.job4j.function;
 
-import junit.framework.TestCase;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -18,8 +17,7 @@ public class SearchFolderTest {
         List<Folder> expected = List.of(new Folder("fix", 110));
         Predicate<Folder> pred = f -> f.getSize() > 100;
         List<Folder> rsl = SearchFolder.filter(list, pred);
-        Assert.assertEquals(expected, rsl);
-//        assertThat(rsl, is(expected));
+        assertThat(rsl).isEqualTo(expected);
     }
 
     @Test
@@ -35,7 +33,6 @@ public class SearchFolderTest {
         );
         Predicate<Folder> pred = f -> f.getName().contains("bug");
         List<Folder> rsl = SearchFolder.filter(list, pred);
-        Assert.assertEquals(expected, rsl);
-//        assertThat(rsl, is(expected));
+        assertThat(rsl).isEqualTo(expected);
     }
 }

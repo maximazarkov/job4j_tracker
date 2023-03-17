@@ -50,12 +50,12 @@ public class Ktsm {
 
     @Override
     public String toString() {
-        return "КТСМ " +
-                "тип: " + type + ", " +
-                "серийный номер: " + id + ", " +
-                "наличие Ethernet: " + ethernetPort + ", " +
-                "тип подсистемы Б: " + typeB + ", " +
-                "тип подсистемы СКТР: " + typeSktr + ".";
+        return "КТСМ "
+                + "тип: " + type + ", "
+                + "серийный номер: " + id + ", "
+                + "наличие Ethernet: " + ethernetPort + ", "
+                + "тип подсистемы Б: " + typeB + ", "
+                + "тип подсистемы СКТР: " + typeSktr + ".";
     }
 }
 

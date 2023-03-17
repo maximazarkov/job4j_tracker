@@ -29,6 +29,7 @@ public class ConsoleInput implements Input {
      * @return - возвращаем числовое значение меню.
      */
     @Override
+    @Deprecated
     public int askToInt(String question, int[] range) {
         int key = Integer.parseInt(this.askToStr(question));
         boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой

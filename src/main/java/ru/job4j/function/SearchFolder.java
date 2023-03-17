@@ -9,17 +9,22 @@ public class SearchFolder {
      *  Метод для фильтрации по размеру
      * @param list Список
      * @return Перечень найденных файлов
-     * @deprecated Рекомендуется использовать метод filter(List<Folder> list, Predicate<Folder> pred)...
+     * @deprecated Рекомендуется использовать метод
+     * filter(List<Folder> list, Predicate<Folder> pred)...
      */
+    @Deprecated
     public static List<Folder> filterSize(List<Folder> list) {
         return filter(list, f -> f.getSize() > 100);
     }
+
     /**
      *  Метод для фильтрации по имени
      * @param list Список
      * @return Перечень найденных файлов
-     * @deprecated Рекомендуется использовать метод filter(List<Folder> list, Predicate<Folder> pred)...
+     * @deprecated Рекомендуется использовать метод
+     * filter(List<Folder> list, Predicate<Folder> pred)...
      */
+    @Deprecated
     public static List<Folder> filterName(List<Folder> list) {
         return filter(list, f -> f.getName().contains("bug"));
     }

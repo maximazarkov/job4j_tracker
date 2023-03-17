@@ -1,12 +1,12 @@
 package ru.job4j.ex;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FactTest {
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void whenNIsNegativeThenFinish() {
-        Fact.calc(-1);
+        assertThrows(IllegalArgumentException.class, () -> Fact.calc(-1));
     }
 }

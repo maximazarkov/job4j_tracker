@@ -10,19 +10,12 @@ import java.util.Objects;
 *@since 0.1
 */
 public class Item {
+	private static final DateTimeFormatter FORMATTER =
+			DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 	private String id;
 	private String name;
 	private String desc;
 	private final LocalDateTime created = LocalDateTime.now();
-	private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-
-	/**
-	 * метод определяет текущее время
-	 * @return - текущее время
-	 */
-	public LocalDateTime getLocalDataTime() {
-		return created;
-	}
 
 	/**
 	 * Конструктор. Создает элемент типа Item - заявка.
@@ -49,11 +42,21 @@ public class Item {
 	}
 
 	/**
-	 * setId - принимает значение уникального ключа заявки. Уникальный ключ заявки - id элемента массива Item.
+	 * метод определяет текущее время
+	 * @return - текущее время
+	 */
+	public LocalDateTime getLocalDataTime() {
+		return created;
+	}
+
+	/**
+	 * setId - принимает значение уникального ключа заявки.
+	 * Уникальный ключ заявки - id элемента массива Item.
 	 * Генерируется с помощью hash-функции.
 	 * @param id - значение уникального ключа заявки типа String.
 	 * @since 0.1.
 	 */
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -112,7 +115,10 @@ public class Item {
 			return false;
 		}
 		Item item = (Item) o;
-		return created == item.created && Objects.equals(id, item.id) && Objects.equals(name, item.name) && Objects.equals(desc, item.desc);
+		return created == item.created
+				&& Objects.equals(id, item.id)
+				&& Objects.equals(name, item.name)
+				&& Objects.equals(desc, item.desc);
 	}
 
 	@Override

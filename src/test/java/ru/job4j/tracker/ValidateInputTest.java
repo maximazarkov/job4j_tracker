@@ -1,16 +1,11 @@
 package ru.job4j.tracker;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
+import static org.assertj.core.api.Assertions.*;
 import ru.job4j.tracker.input.StubInput;
 import ru.job4j.tracker.input.ValidateInput;
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 /**
  * @author Petr Arsentev (parsentev@yandex.ru)
@@ -21,12 +16,12 @@ public class ValidateInputTest {
     private final ByteArrayOutputStream mem = new ByteArrayOutputStream();
     private final PrintStream out = System.out;
 
-    @Before
+    @BeforeEach
     public void loadMem() {
         System.setOut(new PrintStream(this.mem));
     }
 
-    @After
+    @AfterEach
     public void loadSys() {
         System.setOut(this.out);
     }
@@ -37,12 +32,8 @@ public class ValidateInputTest {
                 new StubInput(new String[] {"invalid", "1"})
         );
         input.askToInt("Enter", new int[] {1});
-        assertThat(
-                this.mem.toString(),
-                is(
-                        String.format("Please enter validate data again%n")
-                )
-        );
+        assertThat(this.mem.toString())
+                .isEqualTo(String.format("Please enter validate data again%n"));
     }
 
     @Test
@@ -51,11 +42,7 @@ public class ValidateInputTest {
                 new StubInput(new String[] {"-1", "1"})
         );
         input.askToInt("Enter", new int[] {1});
-        assertThat(
-                this.mem.toString(),
-                is(
-                        String.format("Please select key from menu.%n")
-                )
-        );
+        assertThat(this.mem.toString())
+                .isEqualTo(String.format("Please select key from menu.%n"));
     }
 }

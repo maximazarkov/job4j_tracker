@@ -6,12 +6,9 @@ import ru.job4j.tracker.tracker.Store;
 import java.util.function.Consumer;
 
 public class MenuTracker {
-    private final Input input; // хранит ссылку на объект
-    private final Store tracker; // хранит ссылку на объект
-//    private List<UserAction> actionsList = new ArrayList<>(); // хранит ссылку на массив типа UserAction
-    private UserAction[] actions; // хранит ссылку на массив типа UserAction
-
-
+    private final Input input;
+    private final Store tracker;
+    private UserAction[] actions;
 
     /**
      * Реализация вывода данных с помощью Consumer
@@ -36,6 +33,7 @@ public class MenuTracker {
      * @return длину массива
      * @deprecated - остался от прошлых версий класса. Не рекомендуется применять.
      */
+    @Deprecated
     public int getActionsLength() {
         return this.actions.length;
     }

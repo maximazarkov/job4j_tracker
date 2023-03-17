@@ -12,14 +12,14 @@ import java.util.function.Consumer;
  */
 public class FindAllAction implements UserAction {
 
-
     @Override
     public String nameMenu() {
         return "Show all Items";
     }
 
     @Override
-    public boolean execute(Input input, Store tracker, Consumer<String> output) throws SQLException {
+    public boolean execute(Input input, Store tracker, Consumer<String> output)
+            throws SQLException {
         System.out.println("------------ Show all Items --------------");
         for (Item item : tracker.findAll()) {
             output.accept(String.format("Name: %s| Desc: %s| Id: %s",

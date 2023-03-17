@@ -1,8 +1,8 @@
 package ru.job4j.tracker;
 
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 import ru.job4j.tracker.tracker.MemTracker;
 import java.util.List;
 
@@ -17,9 +17,9 @@ import java.util.List;
 
 public class TrackerTest {
 
-	MemTracker tracker;
+	private MemTracker tracker;
 
-	@Before
+	@BeforeEach
 	public void loadOutputBefore() {
 		tracker = new MemTracker();
 	}
@@ -29,7 +29,7 @@ public class TrackerTest {
         Item item = new Item("test1", "testDescription");
         tracker.add(item);
         Item result = tracker.findById(item.getId());
-		Assert.assertEquals(item.getName(), result.getName());
+        assertThat(item.getName()).isEqualTo(result.getName());
     }
 
 	@Test
@@ -42,7 +42,7 @@ public class TrackerTest {
 		// Обновляем заявку в трекере.
 		tracker.replace(previous.getId(), next);
 		// Проверяем, что заявка с таким id имеет новые имя test2.
-		Assert.assertEquals("test2", tracker.findById(previous.getId()).getName());
+		assertThat("test2").isEqualTo(tracker.findById(previous.getId()).getName());
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class TrackerTest {
 		item = new Item("test3", "testDescription3");
 		tracker.add(item);
 		// Проверяем, что заявка с таким id имеет новые имя test2.
-		Assert.assertTrue(tracker.delete(idForDelete));
+		assertThat(tracker.delete(idForDelete)).isTrue();
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class TrackerTest {
 		tracker.add(item);
 		List<Item> result  = tracker.findAll();
 		// Проверяем, что заявка с таким id имеет новые имя test2.
-		Assert.assertEquals(result, tracker.findAll());
+		assertThat(result).isEqualTo(tracker.findAll());
 	}
 
 	@Test
@@ -87,7 +87,7 @@ public class TrackerTest {
 		tracker.add(item);
 		List<Item> allItem  = tracker.findByName("test1");
 		// Проверяем, что заявка с таким id имеет новые имя test2.
-		Assert.assertEquals(allItem, tracker.findByName("test1"));
+		assertThat(allItem).isEqualTo(tracker.findByName("test1"));
 	}
 
 	@Test
@@ -103,6 +103,6 @@ public class TrackerTest {
 		tracker.add(item);
 		Item result  = tracker.findById(idForFindId);
 		// Проверяем, что заявка с таким id имеет новые имя test2.
-		Assert.assertEquals(result, tracker.findById(idForFindId));
+		assertThat(result).isEqualTo(tracker.findById(idForFindId));
 	}
 }

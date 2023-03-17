@@ -1,7 +1,7 @@
 package ru.job4j.stream;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.*;
 
 public class KtsmTest {
 
@@ -11,7 +11,9 @@ public class KtsmTest {
                 .buildTypeB("БУНК")
                 .buildTypeSktr("СКТР v.2.0")
                 .build();
-        Assert.assertEquals(ktsm.toString(), "КТСМ тип: КТСМ-02, серийный номер: 12356, наличие Ethernet: false, тип подсистемы Б: БУНК, тип подсистемы СКТР: СКТР v.2.0.");
+        String expected = "КТСМ тип: КТСМ-02, серийный номер: 12356, наличие Ethernet: false, "
+                + "тип подсистемы Б: БУНК, тип подсистемы СКТР: СКТР v.2.0.";
+        assertThat(expected).isEqualTo(ktsm.toString());
     }
 
 }

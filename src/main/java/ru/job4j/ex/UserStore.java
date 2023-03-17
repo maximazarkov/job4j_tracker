@@ -14,6 +14,7 @@ public class UserStore {
         }
         return rsl;
     }
+
     public static boolean validate(User user) throws UserInvalidException {
         if (!user.isValid() || user.getUsername().length() < 3) {
             throw new UserInvalidException("Not valid user");
@@ -31,7 +32,6 @@ public class UserStore {
                 System.out.println("This user has an access");
             }
         } catch (Exception e) {
-            // т.к. на все исключения определено одно и то же действие, то отловим исключение на уровне Exception.
             e.printStackTrace();
         }
     }
