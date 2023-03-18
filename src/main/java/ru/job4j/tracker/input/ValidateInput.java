@@ -21,6 +21,7 @@ public class ValidateInput implements Input {
     }
 
     @Override
+    @Deprecated
     public int askToInt(String question, int[] range) {
 
         /*
