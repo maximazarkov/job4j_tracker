@@ -24,9 +24,6 @@ public class LambdaUsage {
             return first - second;
         };
 
-        //было
-        Comparator<Attachment> comparator = (left, right) -> left.getSize() - right.getSize();
-        // стало
         Comparator<Attachment> comp = (left, right) -> {
             System.out.println("compare - " + left.getSize() + " : " + right.getSize());
             return Integer.compare(left.getSize(), right.getSize());

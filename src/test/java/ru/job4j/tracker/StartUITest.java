@@ -29,7 +29,6 @@ public class StartUITest {
             DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();  // буфер для результата
     private final Consumer<String> output = new Consumer<>() {        //...
-        // сохраним дефолтный вывод на консоль, чтобы потом к нему вернуться
         private final PrintStream stdout = new PrintStream(out);
         @Override
         public void accept(String s) {
@@ -56,11 +55,6 @@ public class StartUITest {
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
-//
-//    @After
-//    public void backOutput() {
-//        System.setOut(this.stdout);
-//    }
 
     @Test
     public void whenShowAllItemsMem() throws Exception {
@@ -116,7 +110,6 @@ public class StartUITest {
                 new StubInput(new String[]{"6", "a", "0"})
         );
         new StartUI().init(validate, tracker, actions);
-//        new StartUI(input, tracker, output);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
         sb.append("-------------- Find Item by Name --------------").append(LS);
@@ -139,15 +132,12 @@ public class StartUITest {
         new StartUI().init(validate, tracker, actions);
         StringBuilder sb = new StringBuilder();
         sb.append(MENU).append(LS);
-        // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
         assertThat("test name").isEqualTo(tracker.findAll().get(0).getName());
     }
 
     @Test
     public void whenUpdateThenTrackerHasUpdatedValue() throws Exception {
-        // создаём Tracker
         Store tracker = new MemTracker();
-        //Напрямую добавляем заявку
         Item item = new Item("test name", "desc");
         tracker.add(item);
         Input validate = new ValidateInput(
@@ -162,9 +152,7 @@ public class StartUITest {
 
     @Test
     public void whenDeleteThenNull() throws Exception {
-        // создаём Tracker
         Store tracker = new MemTracker();
-        //Напрямую добавляем заявку
         Item item = new Item("test name", "desc");
         tracker.add(item);
         Input validate = new ValidateInput(

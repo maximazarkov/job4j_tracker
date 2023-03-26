@@ -16,30 +16,6 @@ import java.util.function.Consumer;
  * @since 0.1
  */
 public class StartUISQL {
-//    private static final int EXIT = 6; //Константа для выхода из цикла.
-//    private final Input input; //  Получение данных от пользователя.
-//    private final SqlTracker tracker; // Хранилище заявок
-//
-//    /**
-//     * Реализация вывода данных с помощью Consumer.
-//     С помощью лямбда будет передана функция println
-//     * @since 11.10.2019 0.2
-//     */
-//    private final Consumer<String> output;
-//
-//    /**
-//     * Конструтор инициализирующий поля.
-//     * @param input ввод данных.
-//     * @param tracker хранилище заявок.
-//     * @param output ...
-//     * @since 15.04.2021 0.2
-//     */
-//    public StartUISQL(Input input, SqlTracker tracker, Consumer<String> output) {
-//        this.input = input;
-//        this.tracker = tracker;
-//        this.output = output;
-////        init();
-//    }
 
     /**
      * Инициализация трекера. Н-р, при работе с памятью нет действия; при работе с БД,
@@ -49,10 +25,6 @@ public class StartUISQL {
         boolean exit = false;
         MenuTracker menu = new MenuTracker(validate, tracker, System.out::println);
         menu.fillActions(actions);
-//        int[] range = new int[menu.getActionsLentgh()];
-//        for (int i = 0; i < menu.getActionsLentgh(); i++) {
-//            range[i] = i;
-//        }
         while (!exit) {
             menu.show();
             int select = validate.askToInt("Enter select: ", actions.length);

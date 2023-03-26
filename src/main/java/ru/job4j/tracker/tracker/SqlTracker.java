@@ -13,12 +13,13 @@ import java.util.*;
  * @version $Id$
  * @since 12.04.2021 v0.1
  */
-//Для использования SQL запросов существуют 3 типа объектов:
-//1.Statement: используется для простых случаев без параметров.
-// Данный тип применен в методе findAll()
-//2...
-//3...
-
+/**
+ * Для использования SQL запросов существуют 3 типа объектов:
+ * 1.Statement: используется для простых случаев без параметров.
+ *  Данный тип применен в методе findAll()
+ * 2...
+ * 3...
+ */
 public class SqlTracker implements Store {
     private static final Logger LOG = LoggerFactory.getLogger(SqlTracker.class.getName());
     private static final String FINDALL_REQUEST = "select * from item;";
@@ -61,24 +62,8 @@ public class SqlTracker implements Store {
         List<Item> findItems = new ArrayList<>();
 
         try (Statement statement = cn.createStatement()) {
-            //Выполним запрос
             try (ResultSet result = statement.executeQuery(FINDALL_REQUEST)) {
-                //result это указатель на первую строку с выборки
-                //чтобы вывести данные мы будем использовать
-                //метод next() , с помощью которого переходим к следующему элементу
                 LOG.debug("Выводим statement");
-//        System.out.println("Выводим statement");
-//        while (result.next()) {
-//            System.out.println("Номер в выборке #" + result.getRow()
-//                    + "\t Номер в базе #" + result.getInt("id")
-//                    + "\t" + result.getString("username"));
-//        }
-//        // Вставить запись
-//        statement.executeUpdate(
-//                "INSERT INTO users(username) values('name')");
-//        //Обновить запись
-//        statement.executeUpdate(
-//                "UPDATE users SET username = 'admin' where id = 1");
                 while (result.next()) {
                     findItems.add(new Item(
                             String.valueOf(result.getLong("id_item")),

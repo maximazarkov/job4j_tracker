@@ -1,14 +1,10 @@
 package ru.job4j.pojo;
 
-//import java.time.LocalDateTime;
-
-/*В замен примера из задания сдел свой для проработки будущего проекта*/
 public class Product {
     private long id;
     private long skmtr;
     private String name;
     private String type;
-//    private LocalDateTime release;  //перейти в будущем. уйти от стринг
     private String release;
 
     public Product(long id, long skmtr, String name, String type, String release) {

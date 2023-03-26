@@ -60,8 +60,7 @@ public class StubInput implements Input {
     @Deprecated
     public int askToInt(String question, int[] range) {
         int key = Integer.valueOf(this.value[this.position++]);
-        boolean exist = false; // по умолчанию считаем, что данные введены с ошибкой
-        // прогоним значение через диапазон меню
+        boolean exist = false;
         for (int value : range) {
             if (value == key) {
                 exist = true;

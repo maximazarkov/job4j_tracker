@@ -8,10 +8,7 @@ public class JdbcConfig {
         /*load jdbc*/
     }
 
-        // Первый вариант - пробросить исключение дальше по иерархии классов.
-//    public static void main(String[] args) throws UserInputException {
     public static void main(String[] args) {
-        // но лучше использовать второй вариант (по ситуации) - try...catch.
          try {
             load("jdbc://localhost:8080");
         } catch (UserInputException e) {

@@ -24,7 +24,7 @@ public class ValidateInput implements Input {
     @Deprecated
     public int askToInt(String question, int[] range) {
 
-        /*
+        /**
          * Инициализируем условие выхода из цикла опроса клавиатуры. Если ошибок нет,
          * то клавиатура опрашивается
          * без замечаний и возвращается номер нажато клавиши. Если допущен случай исключения,
