@@ -26,17 +26,20 @@ public class PhoneNumberValidator {
 
         String[] totalParts = phoneNumber.split(" ");
         if (totalParts.length != 2) {
-            return new ValidationResult(ValidationResult.Status.INVALID, "String is not consisted from two parts, delimited by space");
+            return new ValidationResult(ValidationResult.Status.INVALID,
+                    "String is not consisted from two parts, delimited by space");
         }
 
         String number = totalParts[1];
         String[] numberParts = number.split("-");
         if (numberParts.length != 2) {
-            return new ValidationResult(ValidationResult.Status.INVALID, "Number is not consisted from two parts, delimited by -");
+            return new ValidationResult(ValidationResult.Status.INVALID,
+                    "Number is not consisted from two parts, delimited by -");
         }
 
         if (!isNumeric(totalParts[0]) || !isNumeric(number)) {
-            return new ValidationResult(ValidationResult.Status.INVALID, "String contains denied charaters");
+            return new ValidationResult(ValidationResult.Status.INVALID,
+                    "String contains denied charaters");
         }
 
         return new ValidationResult(ValidationResult.Status.VALID, "Valid");
