@@ -27,8 +27,8 @@ public class StartUITest {
             .append("0. Exit program").toString();
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
-    private final ByteArrayOutputStream out = new ByteArrayOutputStream();  // буфер для результата
-    private final Consumer<String> output = new Consumer<>() {        //...
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private final Consumer<String> output = new Consumer<>() {
         private final PrintStream stdout = new PrintStream(out);
         @Override
         public void accept(String s) {
@@ -58,7 +58,7 @@ public class StartUITest {
 
     @Test
     public void whenShowAllItemsMem() throws Exception {
-        Store tracker = new MemTracker();     // создаём Tracker
+        Store tracker = new MemTracker();
         Item item = new Item("a", "a");
         tracker.add(item);
         /*вызовем FindAllAction() и выйдем из программы*/
@@ -125,7 +125,7 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws Exception {
-        Store tracker = new MemTracker();     // создаём Tracker
+        Store tracker = new MemTracker();
         Input validate = new ValidateInput(
                 new StubInput(new String[]{"1",  "test name", "desc", "0"})
         );
