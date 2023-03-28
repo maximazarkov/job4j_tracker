@@ -16,18 +16,11 @@ public class PasswordValidator {
         if (password.length() > 32 || password.length() < 8) {
             throw new IllegalArgumentException("Password should be length [8, 32]");
         }
-
-        try {
-            checkPasswordLetter(password);
-        } catch (IllegalArgumentException iae) {
-            throw new IllegalArgumentException(iae.getMessage());
-        }
-
+        checkPasswordLetter(password);
         if (checkContainSubstring(password, listOfSubStrings)) {
             throw new IllegalArgumentException(
                     "Password shouldn't contain substrings: qwerty, 12345, password, admin, user");
         }
-
         return password;
     }
 
@@ -36,18 +29,18 @@ public class PasswordValidator {
         boolean isUpperCase = true;
         boolean isDigit = true;
         boolean isSpecialSimbol = true;
-        char currentCharacter;
-        for (int i = 0; i < password.length(); i++) {
-            currentCharacter = password.charAt(i);
-            if (Character.isLowerCase(currentCharacter)) {
+        for (char c : password.toCharArray()) {
+            if (!isDigit && !isSpecialSimbol && !isLowerCase && !isUpperCase) {
+                break;
+            } else if (Character.isLowerCase(c)) {
                 isLowerCase = false;
-            } else if (Character.isUpperCase(currentCharacter)) {
+            } else if (Character.isUpperCase(c)) {
                 isUpperCase = false;
-            } else if (Character.isDigit(currentCharacter)) {
+            } else if (Character.isDigit(c)) {
                 isDigit = false;
-            } else if (!Character.isDigit(currentCharacter)
-                    && !Character.isUpperCase(currentCharacter)
-                    && !Character.isLowerCase(currentCharacter)
+            } else if (!Character.isDigit(c)
+                    && !Character.isUpperCase(c)
+                    && !Character.isLowerCase(c)
             ) {
                 isSpecialSimbol = false;
             }
