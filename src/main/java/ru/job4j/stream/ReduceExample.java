@@ -102,7 +102,5 @@ public class ReduceExample {
                         (a, b) -> a + b
                 );
         System.out.println(sumInt);
-
-        
     }
 }
